@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+	<h2>Job</h2>
+	{% if user.is_authenticated %}
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Description</th>
+	  </tr>
+	  {% for flow in flowlist %}
+	    <tr>
+	      <td><a href="{{ flow.get_absolute_url }}">{{ flow.title }}</a></td>
+	      <td>{{ flow.description }}</td>
+	    </tr>
+	  {% endfor %}
+	</table>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}

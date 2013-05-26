@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block left %}
+<div class="well">
+<div class="left">
+	<h1>Get the right freelancer.<br />Get the job done!</h1>
+</div>
+<ol>
+	<li><b>You need your project done.</b> Post your job for free and attract the right freelancers with perfect skills.</li>
+	<li><b>Review proposals, choose a freelancer.</b> Hire in minutes and get jobs done faster.</li>
+	<li><b>Manage and collaborate online.</b> View the job progress in real time.</li>
+	<li><b>Pay only for results.</b> Release funds when milestones are met.</li>
+</ol>
+<br />
+<a href="/client/signup/"><button class="btn btn-large btn-info" type="button" style="margin-left: 40px">Post Your Job. It's Free!</button></a>
+</div>
+{% endblock %}
+
+{% block center %}
+<div class="well">
+<div class="center">
+<h1>Get the perfect job.<br />Get the payment fast!</h1>
+</div>
+<ol>
+<li><b>You find a great client.</b> Create your profile for free that stands out.</li>
+<li><b>Find your passionate works.</b> Submit your proposals and get hired.</li>
+<li><b>Collaborate online.</b> Use real-time feedback to do great work.</li>
+<li><b>Guaranteed Payment.</b> LANCEDINers™ Payment Protection ensures you get paid for all the work you complete.</li>
+</ol>
+<br />
+<a href="/freelancer/signup/"><button class="btn btn-large btn-info" type="button" style="margin-left: 20px">Want a Job? Create a Profile!</button></a>
+</div>
+{% endblock %}
+
+{% block right %}
+<div class="well">
+<div class="right">
+<h1>Sell your portfolio.<br />Get a higher payment!</h1>
+</div>
+<ol>
+<li><b>You have good portfolios and want to sell.</b> Create your gallery that stands out.</li>
+<li><b>Upload your portfolio.</b> Create a great gallery and lets the prospective bidder to view your portfolio.</li>
+<li><b>Manage gallery online.</b> View the higher bidding in real time.</li>
+<li><b>Pay only for items are sold.</b> Release funds when item are delivered.</li>
+</ol>
+<br />
+<a href="/gallery/signup/"><button class="btn btn-large btn-info" type="button" style="margin-left: 20px">Upload &amp; Sell Your Portfolio!</button></a>
+</div>
+{% endblock %}
+
+{% block bottom %}
+<div id="how-it-works">
+<div class="well">
+<div class="row-fluid">
+<div class="span4">
+<img src="{{ MEDIA_URL }}img/how-it-work-1.png" style="float: left;" title="Hire on demand" width="66" height="66" />
+<a href="/how-it-works/"><h2>Hire on demand</h2></a>
+<p>Build a flexible workforce based on skills, ratings, and reviews.</p>
+</div><!-- /.span4 -->
+
+<div class="span4">
+<img src="{{ MEDIA_URL }}img/how-it-work-2.png" style="float: left; margin-left:10px;" title="Manage the work" width="66" height="66" />
+<a href="/how-it-works/"><h2>Manage the work</h2></a>
+<p>See work-in-progress screenshots, time sheets, and daily logs.</p>
+</div><!-- /.span4 -->
+
+<div class="span4">
+<img src="{{ MEDIA_URL }}img/how-it-work-3.png" style="float: left; margin-left:25px;" title="Pay with ease" width="66" height="66" />
+<a href="/how-it-works/"><h2>Pay with ease</h2></a>
+<p>Rest assured with safe global payments and the LANCEDINers™.</p>
+</div><!-- /.span4 -->
+</div>
+</div>
+</div>
+{% endblock %}
