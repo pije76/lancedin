@@ -127,6 +127,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
+    #"pybb.context_processors.processor",
 )
 
 INSTALLED_APPS = (
@@ -136,7 +137,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.flatpages',
+    #'django.contrib.flatpages',
     'django.contrib.humanize',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
@@ -158,15 +159,17 @@ INSTALLED_APPS = (
     #'pin', #pinterest
     #'daddy_avatar',
     'sorl.thumbnail',
-    'taggit',
+    #'taggit',
     'compressor',
     #'paypal.standard.ipn',
     'sorl.thumbnail',
     'haystack',
     'celery_haystack',
     'south',
+    #'pybb',
     #'captcha',
     #'contact_form',
+    'tinymce',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -204,7 +207,8 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-AUTH_PROFILE_MODULE = "freelancer.Profile"
+#AUTH_PROFILE_MODULE = "lancedin.Profile"
+#AUTH_PROFILE_MODULE = 'pybb.Profile'
 ANONYMOUS_USER_ID = -1
 
 USERENA_ACTIVATION_REQUIRED = False
@@ -213,6 +217,26 @@ ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/profile/%(username)s/'
 LOGIN_URL = '/profile/signin/'
 LOGOUT_URL = '/profile/signout/'
+
+#PYBB_SMILES = {
+#    '&gt;_&lt;': 'angry.png',
+#    ':.(': 'cry.png',
+#    'o_O': 'eyes.png',
+#    '[]_[]': 'geek.png',
+#    '8)': 'glasses.png',
+#    ':D': 'lol.png',
+#    ':(': 'sad.png',
+#    ':O': 'shok.png',
+#    '-_-': 'shy.png',
+#    ':)': 'smile.png',
+#    ':P': 'tongue.png',
+#    ';)': 'wink.png'
+#}
+
+# Captcha configuration
+# http://code.google.com/p/django-simple-captcha/
+#RECAPTCHA_PUBLIC_KEY = '6Ld51tsSAAAAAJhhowv56fiImWD1rop38IGavnpT '
+#RECAPTCHA_PRIVATE_KEY = '6Ld51tsSAAAAAI75ZSipL10yqx21brhy_BeKCmXT '
 
 #HAYSTACK + Whoosh configuration
 HAYSTACK_SITECONF = 'lancedin.search_sites'
@@ -251,8 +275,23 @@ DEBUG_TOOLBAR_CONFIG = {
     'ENABLE_STACKTRACES' : True,
 }
 
+#Django-Tagging Configuration
+FORCE_LOWERCASE_TAGS = True
+
+#Django-Rating Configuration
+VALUATION_TEMPLATE = 'rating'
+
 #South configuration
 SOUTH_TESTS_MIGRATE = False
+
+#TINYMCE configuration
+TINYMCE_JS_URL = MEDIA_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT = MEDIA_URL + 'js/tiny_mce'
+TINYMCE_DEFAULT_CONFIG = {
+    'theme': "advanced",
+    'plugins': "table,spellchecker,paste,searchreplace",
+}
+TINYMCE_SPELLCHECKER = True
 
 # Heroku configuration
 # Parse database configuration from $DATABASE_URL
