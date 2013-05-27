@@ -144,7 +144,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'freelancer',
     'client',
-    'classifieds',
+    #'classifieds',
     'categories',
     #'categories.editor',
     'mptt',
@@ -158,13 +158,15 @@ INSTALLED_APPS = (
     #'pin', #pinterest
     #'daddy_avatar',
     'sorl.thumbnail',
-    #'taggit',
-    #'compressor',
+    'taggit',
+    'compressor',
     #'paypal.standard.ipn',
     'sorl.thumbnail',
     'haystack',
     'celery_haystack',
     'south',
+    #'captcha',
+    #'contact_form',
 )
 
 # A sample logging configuration. The only tangible logging
