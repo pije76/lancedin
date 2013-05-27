@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load i18n classifieds thumbnail %}
+
+{% block head %}
+{{ form.media|safe }}
+{% endblock %}
+
+{% block sidebar %}
+<ul>
+ <li><a href="/">Home</a></li>
+</ul>
+<div class="welcome">Welcome, <span class="name">{{ user.first_name }}</span></div>
+<ul class="arrow">
+ <li><a href="{% url classifieds.views.create.select_category %}">Post a New Ad</a></li>
+ <li><a href="{% url classifieds.views.manage.mine %}">Manage My Ads</a></li>
+ <li><a href="{% url profiles_edit_profile %}">My Profile</a></li>
+ <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+ {% block ad_create_status %}
+  {% if create %}
+  {% post_ad_progress 2 %}
+  {% endif %}
+ {% endblock %}
+<p>(<span class="required">*</span> Required Fields)</p>
+<form enctype="multipart/form-data" method="post" action="#">
+ <table id="adEdit">
+  <tr>
+   <th>Category:</th>
+   <td colspan="3" style="font-weight: bold;">{{ ad.category.name }}</td>
+  </tr>
+  {% block form %}
+  {{ form }}
+  {% endblock %}
+  <tr>
+   <td colspan="4">{{ imagesformset.non_form_errors }}</td>
+  </tr>
+  {% if imagesformset.forms %}
+  <tr>
+   <td colspan="4">
+    <h3 style="font-size: 16px;">Add Picture(s)</h3>
+   </td>
+  </tr>
+  <tr>
+   <td colspan="4">Uploaded images must be smaller than {{ ad.category.images_max_size|filesizeformat }}. Images with dimensions larger than {{ ad.category.images_max_width }} by {{ ad.category.images_max_height }} pixels will be resized. 
+   Images must be in one of the following formats:
+   {% for format in ad.category.images_allowed_formats.all %}
+     {{ format.format }}
+   {% endfor %}
+   </td>
+  </tr>
+  {% endif %}
+  {% for imageform in imagesformset.forms %}
+    <tr>
+     <td colspan="4">
+      {{ imageform.id }}
+      <label>Picture #{{ forloop.counter }}</label> {{ imageform.full_photo }}
+      {{ imageform.DELETE.label_tag }}{{ imageform.DELETE }}
+      {% if imageform.initial.full_photo %}
+       {% thumbnail imageform.initial.full_photo "1000" as big %}
+        {% thumbnail imageform.initial.full_photo "50x50" crop="center" as small %}
+         <a href="{{ big.url }}" title="View full-size image"><img src="{{ small.url }}" alt="Photo Thumbnail"></a>
+        {% endthumbnail %}
+       {% endthumbnail %}
+      {% endif %}
+  	 </td>
+  	</tr>
+  {% endfor %}
+ </table>
+ <p style="text-align: right;">
+  {{ imagesformset.management_form }}
+  <input type="submit" class="submit" value="{% if create %}Create{% else %}Update{% endif %}" />
+ </p>
+ {% csrf_token %}
+</form>
+{% endblock %}
+

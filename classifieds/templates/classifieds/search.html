@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div id="search-box">
+ <h1>{% trans 'Search in' %} {{ category.name }}</h1>
+ 
+ <form method="post" action="#">
+  {% csrf_token %}
+  <input type="text" class="text" name="keywords" />
+  <input type="submit" class="submit" value="{% trans 'Search' %}" />
+ </form>
+ 
+ <div id="search-filters"></div>
+ <a href="#" id="search-options">{% trans 'More Search Options' %}</a>
+</div>
+{% endblock %}

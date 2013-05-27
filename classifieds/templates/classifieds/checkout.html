@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n classifieds %}
+
+{% block extrajs %}
+<script type="text/javascript" defer="true" src="{% url classifieds.views.payment.pricing %}"></script>
+{% endblock %}
+
+{% block content %}
+ {% block ad_create_status %}
+  {% post_ad_progress 4 %}
+ {% endblock %}
+ 
+ <p>
+ {% blocktrans with title=ad.title id=ad.pk category_name=ad.category.name %}
+ Checkout page for posting titled "{{ title }}" (Ad Id: {{ id }}) in the {{ category_name }} category.
+ {% endblocktrans %}
+ </p>
+
+ <form method="post" action="{% url classifieds.views.payment.checkout ad.pk %}">
+  {% csrf_token %}
+  <table>
+   {{ form }}
+   <tr>
+    <th><label>Total:</label></th>
+    <td><div id="total">Choose options above</div></td>
+   </tr>
+  </table>
+  <p style="text-align: center;">
+   <input type="image" src="{{ MEDIA_URL }}images/btn_paynowCC_LG.gif" style="border:none;" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+  </p>
+ </form>
+
+ <a class="abort-checkout" onclick="return confirm('{% trans 'Are you sure?' %}');" href="{% url classifieds_manage_view_all %}">{% trans 'Exit / Delete' %}</a>
+
+{% endblock %}

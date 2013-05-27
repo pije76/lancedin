@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n classifieds %}
+
+{% block content %}
+ {% block ad_create_status %}
+ {% ifequal type "create" %}
+  {% post_ad_progress 1 %}
+ {% endifequal %}
+ {% endblock %}
+
+<ul class="category-list">
+{% for category in categories %}
+ {% ifequal type "create" %}
+ <li><span>{{ category.description }}</span><a class="button" href="{% url classifieds_create_ad_in_category category.slug %}">{{ category.name }}</a></li>
+ {% endifequal %}
+ {% endfor %}
+</ul>
+{% endblock %}

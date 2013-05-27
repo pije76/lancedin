@@ -144,27 +144,27 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'freelancer',
     'client',
-    #'classifieds',
+    'classifieds',
     'categories',
     #'categories.editor',
-    #'mptt',
+    'mptt',
     'debug_toolbar',
-    #'ratings',
-    #'userena',
-    #'guardian',
+    'ratings',
+    'userena',
+    'guardian',
     'registration',
-    #'profiles',
+    'profiles',
     'tagging',
     #'pin', #pinterest
     #'daddy_avatar',
-    #'sorl.thumbnail',
+    'sorl.thumbnail',
     #'taggit',
     #'compressor',
     #'paypal.standard.ipn',
     'sorl.thumbnail',
     'haystack',
     'celery_haystack',
-    #'south',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -254,13 +254,8 @@ SOUTH_TESTS_MIGRATE = False
 
 # Heroku configuration
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-
-
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

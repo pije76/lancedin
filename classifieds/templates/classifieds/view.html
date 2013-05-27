@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load humanize i18n classifieds thumbnail %}
+
+{% block head %}
+ <script type="text/javascript" src="{{ MEDIA_URL }}js/thumbnails.js"></script>
+{% endblock %}
+
+{% block content %}
+ {% block ad_create_status %}
+  {% if create %}
+  {% post_ad_progress 3 %}
+  {% endif %}
+ {% endblock %}
+
+ {% if not create %}
+  {% if ad.expired %}
+  <h3>This ad has expired</h3>
+  {% endif %}
+ {% endif %}
+
+ {% block ad %}
+
+<div class="ad-view">
+ <ul class="options">
+  <li>
+   <a href="{% url classifieds.views.browse.search_results ad.category.pk %}">&lt; Back to Results</a>
+   </li>
+  <li>
+   <a href="{% url classifieds.view.contact.contact_seller ad.pk %}">Contact Info</a>
+  </li>
+  <li>
+   <a href="{% url classifieds_manage_ad_edit ad.pk %}">Edit Ad</a>
+  </li>
+ </ul>
+</div>
+
+ <div class="title">{{ ad.title }}</div>
+
+ {% if ad.fields_dict.price %}
+ <div class="price">${{ ad.fields_dict.price|intcomma }}</div>
+ {% endif %}
+
+ <div class="id">
+  <span class="label">ID :</span> {{ ad.pk }}<br />
+  <span class="label">Posted on :</span> {{ ad.created_on|date:"F jS, Y" }}
+ </div>
+ 
+ {% if ad.fields_dict.city and ad.fields_dict.state and ad.fields_dict.zip_code %}
+ <div class="location">{{ ad.fields_dict.city }},{{ ad.fields_dict.state }} {{ ad.fields_dict.zip_code }}</div>
+ {% else %}
+  {% if ad.fields_dict.zip_code %}
+ <div class="location">{{ ad.fields_dict.zip_code }}</div>
+  {% endif %}
+ {% endif %}
+ 
+ {% if ad.fields_dict.description %}
+ <div class="description">
+  <h2>Description :</h2>
+  {{ ad.fields_dict.description }}
+ </div>
+ {% endif %}
+
+ <div class="images">
+ {% for image in ad.adimage_set.all %}
+  {% thumbnail image.full_photo "1000" as big %}
+   {% thumbnail image.full_photo "50x50" crop="center" as small %}
+    <a href="{{ big.url }}" title="View full-size image"><img src="{{ small.url }}" alt="Photo Thumbnail"></a>
+   {% endthumbnail %}
+  {% endthumbnail %}
+ {% endfor %}
+ </div>
+</div>
+ {% endblock %}
+ {% block preview_next %}
+  {% if create %}
+   <div style="height: 100px;">
+    <a class="button" style="margin-left: 73px; margin-right: 10px; float: left;" href="{% url classifieds_create_ad_edit ad.pk %}">Edit Ad</a>
+    <a class="button" style="float: left;" href="{% url classifieds.views.payment.checkout ad.pk %}">Continue</a>
+   </div>
+  {% endif %}
+ {% endblock %}
+{% endblock %}
+
+{% block tellafriend %}http://{{ site.domain }}{% url classifieds_browse_ad_view ad.pk %}{% endblock %}
