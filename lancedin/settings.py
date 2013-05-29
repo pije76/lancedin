@@ -158,7 +158,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'ratings',
     'bootstrapform',
-    'userenabootstrap',
+    #'userenabootstrap',
     'userena',
     'guardian',
     #'registration',
