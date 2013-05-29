@@ -242,12 +242,12 @@ body {
   font-weight: bold;
 }
 .navbar.navbar-fixed-top .nav  > li > a {
-  color: #fffff;
+  color: #ffffff;
   font-size: 16px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 .navbar.navbar-fixed-top .nav  > li > a:hover {
-  color: #86B2B4;
+  color: #2D2D2D;
   font-size: 16px;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
@@ -599,6 +599,9 @@ button.button:active, a.button:active {
 
 .btn-info {
 	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #how-it-works .well .row-fluid .span4 a h2{
