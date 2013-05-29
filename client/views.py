@@ -11,7 +11,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
 from django.template import RequestContext
 
-from models import Work
+from models import Job
 from tagging.models import Tag, TaggedItem
 
 import django.shortcuts as shortcuts
@@ -21,47 +21,47 @@ import models
 
 # Create your views here.
 def home(request):
-	worklist = Work.objects.all()
-	return render_to_response('index.html', {'worklist':worklist,}, context_instance=RequestContext(request))
+	joblist = Job.objects.all()
+	return render_to_response('index.html', {'joblist':joblist,}, context_instance=RequestContext(request))
 
 @login_required
 def list(request):
-    worklist = Work.objects.all()
-    return render_to_response('client/job_list.html', {'worklist':worklist,}, context_instance=RequestContext(request))
+    joblist = Job.objects.all()
+    return render_to_response('client/job_list.html', {'joblist':joblist,}, context_instance=RequestContext(request))
 
-class WorkForm(forms.ModelForm):
+class JobForm(forms.ModelForm):
     class Meta:
-        model = Work
+        model = Job
         exclude = ['creation_date', 'slug']
 
 @login_required
-def edit(request, work_id = None):
-	work = None
-	if work_id is not None:
-		work = get_object_or_404(Job, pk=work_id)
+def edit(request, job_id = None):
+	job = None
+	if job_id is not None:
+		job = get_object_or_404(Job, pk=job_id)
 
 	if request.method == 'POST':
-		form = JobForm(request.POST, instance=work)
+		form = JobForm(request.POST, instance=job)
 		if form.is_valid():
-			newwork = form.save(commit=False)
-			newwork.user = request.user
-			newwork.save()
-			return HttpResponseRedirect(newwork.get_absolute_url())
+			newjob = form.save(commit=False)
+			newjob.user = request.user
+			newjob.save()
+			return HttpResponseRedirect(newjob.get_absolute_url())
 	else:
-		form = JobForm(instance=work)
-	return render_to_response('client//job_edit.html', {'form':form, 'work':work,}, context_instance=RequestContext(request))
+		form = JobForm(instance=job)
+	return render_to_response('client//job_edit.html', {'form':form, 'job':job,}, context_instance=RequestContext(request))
 
 connection._rollback()
 
 def details(request, slug):
-	work = get_object_or_404(Job, slug=slug)
-	return render_to_response('client/job_detail.html', {'work':work,}, context_instance=RequestContext(request))
+	job = get_object_or_404(Job, slug=slug)
+	return render_to_response('client/job_detail.html', {'job':job,}, context_instance=RequestContext(request))
 
 @login_required
-def delete(request, work_id):
-	work = Work.objects.get(pk=work_id)
-	work.delete()
-	return HttpResponseRedirect('/get-work/')
+def delete(request, job_id):
+	job = Job.objects.get(pk=job_id)
+	job.delete()
+	return HttpResponseRedirect('/get-job/')
 
 def tags(request):
 		return render_to_response('tag/tag_archive.html', {}, context_instance=RequestContext(request))

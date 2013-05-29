@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+	{% if user.is_authenticated %}
+	  {% for flow in pubflow %}
+	    <tr>
+	      <td><a href="{{ flow.get_absolute_url }}">{{ flow.title }}</a></td>
+	    </tr>
+	  {% endfor %}
+	</table>
+	{% endif %}
+	{% endblock %}
+</div>
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}

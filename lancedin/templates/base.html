@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block page_title %}The Best Place To Find Clients, Freelancers, &amp; Online's Portfolio In The World! - LancedIn{% endblock %}</title>
+    <title>{% block page_title %}The Best Place To Find Clients, Freelancers, &amp; Portfolios In The World! - LancedIn{% endblock %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -100,12 +100,13 @@
 		<div class="row-fluid">
 			<div class="span12">
 				{% block bottom %}
-				{{ flatpage.content|safe }}
 				{% endblock %}
 			</div>
 		</div>
-
 	</div>
+{% block content %}
+{{ flatpage.content|safe }}
+{% endblock %}
 </div>
 
 <div class="centerer">
@@ -115,7 +116,7 @@
         	<a href="/about-us/">About Us</a><br />
         	<a href="/blog/">Blog</a><br />
         	<a href="/forum/">Forum</a><br />
-        	<a href="/lancediners™/">LANCEDINers™</a><br />
+        	<a href="/lancediners/">LANCEDINers™</a><br />
         	<a href="/terms-of-service/">Terms of Service</a><br />
         	<a href="/privacy-policy/">Privacy Policy</a><br />
         	<a href="/support/">Support</a><br />
@@ -133,13 +134,19 @@
     <div class="entry">
         <span class="entry-title">Connect With Us</span>
         <div class="text">
-        <a href="http://www.facebook.com/pages/LancedIn/"><img src="{{ MEDIA_URL }}img/ico-facebook.png" style="float: left;" title="Likes our page on Facebook" width="26" height="26" /></a>
+        <a href="http://www.facebook.com/pages/LancedIn/">
+        	<img src="{{ MEDIA_URL }}img/ico-facebook.png" style="float: left;" title="Likes our page on Facebook" width="26" height="26" />
+        </a>
         <div style="clear:both;"></div>
         <p>Become a fan of LancedIn</p><br />
-        <a href="http://twitter.com/lancedin"><img src="{{ MEDIA_URL }}img/ico-twitter.png" style="float: left;" title="@lancedin" width="26" height="26" /></a>
+        <a href="http://twitter.com/lancedin">
+        	<img src="{{ MEDIA_URL }}img/ico-twitter.png" style="float: left;" title="@lancedin" width="26" height="26" />
+        </a>
         <div style="clear:both;"></div>
         <p>Follow us on Twitter</p><br />
-        <a href="/subscribe/"><img src="{{ MEDIA_URL }}img/ico-email.png" style="float: left;" title="Subscribe to get updates" width="26" height="26" /></a>
+        <a href="/subscribe/">
+        	<img src="{{ MEDIA_URL }}img/ico-email.png" style="float: left;" title="Subscribe to get updates" width="26" height="26" />
+        </a>
         <div style="clear:both;"></div>
         <p>Subscribe our newsletter</p>
         </div>

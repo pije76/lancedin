@@ -1,13 +1,15 @@
 from django.contrib import admin
 
-from models import Work
+from models import Job
 
-from categories.forms import CategoriesFormMixin
+#from categories.forms import CategoriesFormMixin
 
-class CategorizedWorkForm(CategoriesFormMixin):
-	pass
+#class CategorizedJobForm(CategoriesFormMixin):
+#	pass
 
-class CategorizedPhotoSetAdmin(admin.ModelAdmin):
-	form = CategorizedWorkForm
+#class CategorizedPhotoSetAdmin(admin.ModelAdmin):
+#	form = CategorizedWorkForm
 
-admin.site.register(Work, CategorizedPhotoSetAdmin)
+#admin.site.register(Client)
+admin.site.register(Job)
+#admin.site.register(Job, CategorizedPhotoSetAdmin)

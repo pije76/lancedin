@@ -137,39 +137,49 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.flatpages',
+    'django.contrib.flatpages',
     'django.contrib.humanize',
+
+    # Django WP Admin must be before django.contrib.admin
+    'wpadmin',
+    'wpadmin.menu',
+    'wpadmin.dashboard',
+
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'freelancer',
+    'profile',
     'client',
     #'classifieds',
     'categories',
-    #'categories.editor',
-    'mptt',
+    'categories.editor',
+    #'mptt',
     'debug_toolbar',
     'ratings',
+    'bootstrapform',
+    'userenabootstrap',
     'userena',
     'guardian',
-    'registration',
-    'profiles',
+    #'registration',
+    #'profiles',
     'tagging',
     #'pin', #pinterest
     #'daddy_avatar',
     'sorl.thumbnail',
     #'taggit',
-    'compressor',
+    #'compressor',
     #'paypal.standard.ipn',
-    'sorl.thumbnail',
     'haystack',
     'celery_haystack',
     'south',
     #'pybb',
     #'captcha',
     #'contact_form',
-    'tinymce',
+    #'tinymce',
+    #'isotope',
+    #'jquery',
+    #'endless_pagination',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -201,15 +211,22 @@ LOGGING = {
     }
 }
 
+# Userena configuration #
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
-#AUTH_PROFILE_MODULE = "lancedin.Profile"
-#AUTH_PROFILE_MODULE = 'pybb.Profile'
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+#EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_HOST_USER = 'panjul76@gmail.com'
+#EMAIL_HOST_PASSWORD = 'tratap60'
+
 ANONYMOUS_USER_ID = -1
+AUTH_PROFILE_MODULE = "profile.Profile"
 
 USERENA_ACTIVATION_REQUIRED = False
 USERENA_SIGNIN_REDIRECT_URL = '/'
@@ -218,6 +235,7 @@ LOGIN_REDIRECT_URL = '/profile/%(username)s/'
 LOGIN_URL = '/profile/signin/'
 LOGOUT_URL = '/profile/signout/'
 
+# PYBB configuration #
 #PYBB_SMILES = {
 #    '&gt;_&lt;': 'angry.png',
 #    ':.(': 'cry.png',
@@ -233,12 +251,12 @@ LOGOUT_URL = '/profile/signout/'
 #    ';)': 'wink.png'
 #}
 
-# Captcha configuration
+# Captcha configuration #
 # http://code.google.com/p/django-simple-captcha/
 #RECAPTCHA_PUBLIC_KEY = '6Ld51tsSAAAAAJhhowv56fiImWD1rop38IGavnpT '
 #RECAPTCHA_PRIVATE_KEY = '6Ld51tsSAAAAAI75ZSipL10yqx21brhy_BeKCmXT '
 
-#HAYSTACK + Whoosh configuration
+# Haystack + Whoosh configuration #
 HAYSTACK_SITECONF = 'lancedin.search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'index.whoosh')
@@ -258,6 +276,7 @@ HAYSTACK_CONNECTIONS = {
 #    },
 #}
 
+# Debug Toolbar configuration #
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
     'debug_toolbar.panels.timer.TimerDebugPanel',
@@ -275,16 +294,16 @@ DEBUG_TOOLBAR_CONFIG = {
     'ENABLE_STACKTRACES' : True,
 }
 
-#Django-Tagging Configuration
+# Django-Tagging Configuration #
 FORCE_LOWERCASE_TAGS = True
 
-#Django-Rating Configuration
+# Django-Rating Configuration #
 VALUATION_TEMPLATE = 'rating'
 
-#South configuration
+# South configuration #
 SOUTH_TESTS_MIGRATE = False
 
-#TINYMCE configuration
+# TinyMCE configuration #
 TINYMCE_JS_URL = MEDIA_URL + 'js/tiny_mce/tiny_mce.js'
 TINYMCE_JS_ROOT = MEDIA_URL + 'js/tiny_mce'
 TINYMCE_DEFAULT_CONFIG = {
@@ -293,7 +312,20 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = True
 
-# Heroku configuration
+WPADMIN = {
+    'admin': {
+        'title': 'Django admin panel',
+        'menu': {
+            'top': 'wpadmin.menu.menus.TopMenu',
+            'left': 'wpadmin.menu.menus.LeftMenu',
+        },
+        'dashboard': {
+            'breadcrumbs': True,
+        },
+    },
+}
+
+# Heroku configuration #
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()

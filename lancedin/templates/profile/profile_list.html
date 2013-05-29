@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+	<h2>Job</h2>
+	{% if user.is_authenticated %}
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Description</th>
+	  </tr>
+	  {% for job in joblist %}
+	    <tr>
+	      <td><a href="{{ job.get_absolute_url }}">{{ job.title }}</a></td>
+	      <td>{{ job.description }}</td>
+	    </tr>
+	  {% endfor %}
+	</table>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
