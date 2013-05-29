@@ -18,6 +18,7 @@ django-debug-toolbar==0.9.4
 django-guardian==1.1.0
 django-haystack==1.2.7
 django-mptt==0.5.2
+django-registration==0.8
 django-tagging==0.3.1
 django-userena==1.2.0
 django-wpadmin==0.2.0
