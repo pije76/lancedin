@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     'haystack',
     'celery_haystack',
     'south',
-    'country_utils',
+    #'country_utils',
     #'pybb',
     #'captcha',
     #'contact_form',
