@@ -12,6 +12,7 @@ from tagging.models import Tag
 from ratings.handlers import ratings
 from ratings.forms import SliderVoteForm
 from userena.models import UserenaBaseProfile
+from country_utils.fields import CountryField
 from haystack import indexes
 from haystack.sites import site
 from datetime import datetime
@@ -19,15 +20,16 @@ from datetime import datetime
 import datetime
 import tagging
 
+
 # Create your models here.
 class Profile(UserenaBaseProfile):
 
 	user =  models.OneToOneField(User, unique=True, verbose_name =('user'), related_name = '+')
 	first_name = models.CharField("First Name", max_length=80)
 	last_name = models.CharField("Last Name", max_length=80)
-	email = models.URLField("URL")
+	email = models.EmailField("Email", max_length=254)
 	city = models.CharField("City", max_length=80)
-	country = models.CharField("Country", max_length=80)
+	country = CountryField("Country")
 	title = models.CharField("Title", max_length=80)
 	rate = models.CharField("Hourly Rate", max_length=80)
 	#skill = TagField("Skill", blank=False, help_text='comma separated')

@@ -200,7 +200,7 @@ body {
   box-shadow: 0px 8px 8px -4px rgba(0, 0, 0, 0.6) inset;
   height: 27.5px;
   /* border-bottom:2px solid #EBF0F7; */
-  border-bottom:4px solid #86B2B4;
+  border-bottom:3px solid #86B2B4;
 }
 
 .navbar .nav li .dropdown-menu a:hover
@@ -232,7 +232,7 @@ body {
   margin: 0;
   background: #404040;
   border-right: 0px solid #404040;
-  height: 30px;
+  height: 35px;
   margin-top: 5px;
 }
 .navbar.navbar-fixed-top .nav .active > a,
@@ -604,9 +604,16 @@ button.button:active, a.button:active {
   margin-right: auto;
 }
 
+#how-it-works .well .row-fluid{
+  margin-top: 15px;
+}
+
+#how-it-works .well .row-fluid .span4 h2{
+  margin-top: -20px;
+}
+
 #how-it-works .well .row-fluid .span4 a h2{
 	color: #86B2B4;
-	margin-top: -5px;
 }
 
 #how-it-works .well .row-fluid .span4 a:hover h2{
@@ -621,12 +628,12 @@ button.button:active, a.button:active {
 #how-it-works .well .row-fluid .span4 p{
 	font-size: 12px;
 	font-weight: bold;
-	margin-top: -20px;
+	margin-top: -15px;
 }
 
 
 .container-fluid {
-	margin-top: 60px;
+	margin-top: 30px;
 }
 
 .container-fluid .row-fluid .span4 .well h1{

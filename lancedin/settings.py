@@ -152,8 +152,9 @@ INSTALLED_APPS = (
     'profile',
     'client',
     #'classifieds',
-    'categories',
-    'categories.editor',
+    'category',
+    #'categories',
+    #'categories.editor',
     #'mptt',
     'debug_toolbar',
     'ratings',
@@ -163,7 +164,7 @@ INSTALLED_APPS = (
     'guardian',
     #'registration',
     #'profiles',
-    'tagging',
+    #'tagging',
     #'pin', #pinterest
     #'daddy_avatar',
     'sorl.thumbnail',
@@ -173,6 +174,7 @@ INSTALLED_APPS = (
     'haystack',
     'celery_haystack',
     'south',
+    'country_utils',
     #'pybb',
     #'captcha',
     #'contact_form',
@@ -324,6 +326,16 @@ WPADMIN = {
         },
     },
 }
+
+# Django-Categories Configuration #
+#CATEGORIES_SETTINGS = {
+#    'M2M_REGISTRY': {
+#        'freelancer.Profile': 'category',
+#        'client.Job': (
+#            {'name': 'category', 'related_name': 'category'},
+#        ),
+#    }
+#}
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL
