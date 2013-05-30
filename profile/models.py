@@ -12,7 +12,6 @@ from tagging.models import Tag
 from ratings.handlers import ratings
 from ratings.forms import SliderVoteForm
 from userena.models import UserenaBaseProfile
-#from country_utils.fields import CountryField
 from haystack import indexes
 from haystack.sites import site
 from datetime import datetime
@@ -29,7 +28,6 @@ class Profile(UserenaBaseProfile):
 	last_name = models.CharField("Last Name", max_length=80)
 	email = models.EmailField("Email", max_length=254)
 	city = models.CharField("City", max_length=80)
-	#country = CountryField("Country")
 	title = models.CharField("Title", max_length=80)
 	rate = models.CharField("Hourly Rate", max_length=80)
 	#skill = TagField("Skill", blank=False, help_text='comma separated')
