@@ -93,4 +93,5 @@ typogrify==1.0
 versiontools==1.9.1
 wsgiref==0.1.2
 xapian-haystack==1.1.5beta
-https://github.com/strange/django-country-utils/tarball/master#egg=django-count
+git+git://github.com/strange/django-country-utils.git
+
