@@ -83,4 +83,4 @@ versiontools==1.9.1
 wsgiref==0.1.2
 xapian-haystack==1.1.5beta
 git+git://github.com/strange/django-country-utils.git
-git+git://github.com/nemesisdesign/django-tagging-autocomplete-tag-it.git
+git+git://github.com/pije76/django-tagging-autocomplete-tag-it.git
