@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 from userena.models import UserenaBaseProfile
-from country_utils.fields import CountryField
+#from country_utils.fields import CountryField
 
 # Create your models here.
 class Profile(UserenaBaseProfile):
@@ -13,7 +13,7 @@ class Profile(UserenaBaseProfile):
     first_name = models.CharField("First Name", max_length=80)
     last_name = models.CharField("Last Name", max_length=80)
     email = models.EmailField("Email", max_length=254)
-    country = CountryField(blank=False)
+#    country = CountryField(blank=False)
     rate = models.CharField("Hourly Rate", max_length=80)
     #skill = TagField("Skill", blank=False, help_text='comma separated')
     education = models.CharField("Education", max_length=80)
