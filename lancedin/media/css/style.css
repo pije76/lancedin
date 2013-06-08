@@ -92,7 +92,7 @@ body {
 }
 
 .navbar-fixed-top .nav  > li > a:hover {
-  padding-top: 87px;
+  padding-top: 84px;
   /* color: #2D2D2D; */
   color: #358CCE;
   background-color: #EBF0F7;
@@ -103,6 +103,7 @@ body {
   /*border-top:3px solid #2F96B4;*/
   /*border-top:3px solid #5A5D5F;*/
   /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); */
+  text-shadow: 0 -1px 0 #000000;
 }
 
 .navbar .nav li .dropdown-menu a:hover
