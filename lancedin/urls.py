@@ -36,7 +36,7 @@ urlpatterns = patterns(
 
 #    (r'^tags/$', 'job.views.tags'),
 #    (r'^tag/([-_A-Za-z0-9]+)/$','job.views.with_tag'),
-    (r'^tagging_autocomplete_tagit/', include('tagging_autocomplete_tagit.urls')),
+#    (r'^tagging_autocomplete_tagit/', include('tagging_autocomplete_tagit.urls')),
 
     (r'^search/', include('haystack.urls')),
 #    (r'^tinymce/', include('tinymce.urls')),
