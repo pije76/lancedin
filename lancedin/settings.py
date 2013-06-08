@@ -189,7 +189,7 @@ INSTALLED_APPS = (
     'compressor', #pinterest
 
     'tagging',
-    #'tagging_autocomplete_tagit',
+    'tagging_autocomplete_tagit',
     #'masonry',
     #'editable',
     #'taggit', #pinterest
