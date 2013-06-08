@@ -60,7 +60,6 @@ django-user-profile==1.0.3
 django-userena==1.2.0
 django-wmd-editor==0.9.0
 django-wpadmin==0.2.0
-djangobb-forum==0.0.1a0.dev0
 easy-thumbnails==1.2
 genericadmin==0.3
 gunicorn==0.14.6
