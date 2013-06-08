@@ -141,7 +141,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'django.contrib.humanize',
-    'django.contrib.gis',
+    #'django.contrib.gis',
 
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
