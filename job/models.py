@@ -8,10 +8,10 @@ from django.core.exceptions import *
 #from django.contrib.syndication.feeds import Feed
 #from django.contrib.sitemaps import Sitemap
 
-#from tagging.fields import TagField
-#from tagging.models import Tag
+from tagging.fields import TagField
+from tagging.models import Tag
 
-from tagging_autocomplete_tagit.models import TagAutocompleteTagItField
+#from tagging_autocomplete_tagit.models import TagAutocompleteTagItField
 #from autoslug import AutoSlugField
 from datetime import datetime, timedelta
 
@@ -135,7 +135,8 @@ class Category(models.Model):
 
 
 class Skill(models.Model):
-    title = TagAutocompleteTagItField(max_tags=10)
+#    title = TagAutocompleteTagItField(max_tags=10)
+    title = TagField()
 
     def __unicode__(self):
         return self.title
