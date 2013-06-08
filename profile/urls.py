@@ -11,5 +11,4 @@ urlpatterns = patterns('profile.views',
 	(r'^edit/(?P<flow_id>\d+)/$', 'edit'),
 	(r'^(?P<slug>[-\w]+)$', 'details'),
 	(r'^delete/(?P<flow_id>\d+)/$', 'delete'),
-	(r'^ratings/', include('ratings.urls')),
 )

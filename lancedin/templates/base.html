@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 {% load i18n %}
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block page_title %}The Best Place To Find Clients, Freelancers, &amp; Portfolios In The World! - LancedIn{% endblock %}</title>
+    <title>{% block page_title %}The Right Place To Find Clients, Freelancers, &amp; Portfolios In The World! - LancedIn{% endblock %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="shortcut icon" href="{{ MEDIA_URL }}img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap-responsive.css" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" />
+
+    <style type="text/css">
+        body { padding-top: 60px; }
+        label { display: block; }
+        .errorlist { padding-left: 0; color: red; }
+        .helptext { display: block; color: #666; font-size: small; }
+    </style>
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
 	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
@@ -28,12 +37,6 @@
 	});
 	</script>
     {{media}}
-    <style type="text/css">
-        body { padding-top: 60px; }
-        label { display: block; }
-        .errorlist { padding-left: 0; color: red; }
-        .helptext { display: block; color: #666; font-size: small; }
-    </style>
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -42,121 +45,17 @@
 
 <body>
 
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<div class="nav-collapse">
-				<a class="brand" href="/">LancedIn</a>
-				<ul class="nav">
-					<li><a href="/how-it-works/">How It Works</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="/get-work/">Get Work</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="/hire-freelancer/">Hire Freelancer</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="/gallery/">Gallery</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="/profile/">Profile</a></li>
-				</ul>
-
-				{% if user.is_authenticated %}
-				<div class="member-welcome pull-right">
-					<ul class="nav pull-right">
-						<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans 'Welcome back, ' %} {% if user.get_full_name %}{{ user.get_full_name }} {% else %} {{ user.username }}{% endif %}<b class="caret"></b></a>
-
-						<ul class="dropdown-menu">
-						</ul>
-						</li>
-					</ul>
-				</div>
-				{% else %}
-				{% endif %}
-			</div><!--/.nav-collapse -->
-		</div>
-	</div><!--/. navbar-inner -->
-</div>
+{% include "header.html" %}
 
 <div class="container">
-	<div class="container-fluid">
-
-		<div class="row-fluid">
-			<div class="span4">
-				{% block left %}
-				{% endblock %}
-			</div>
-
-			<div class="span4">
-				{% block center %}
-				{% endblock %}
-			</div>
-
-			<div class="span4">
-				{% block right %}
-				{% endblock %}
-			</div>
-		</div>
-
-		<div class="row-fluid">
-			<div class="span12">
-				{% block bottom %}
-				{% endblock %}
-			</div>
-		</div>
-	</div>
+<div class="content">
 {% block content %}
 {{ flatpage.content|safe }}
 {% endblock %}
 </div>
-
-<div class="centerer">
-    <div class="entry" style="height: 107px;">
-        <span class="entry-title">Company Info</span>
-        <div class="text">
-        	<a href="/about-us/">About Us</a><br />
-        	<a href="/blog/">Blog</a><br />
-        	<a href="/forum/">Forum</a><br />
-        	<a href="/lancediners/">LANCEDINers™</a><br />
-        	<a href="/terms-of-service/">Terms of Service</a><br />
-        	<a href="/privacy-policy/">Privacy Policy</a><br />
-        	<a href="/support/">Support</a><br />
-        </div>
-  	</div>
-    <div class="entry">
-        <span class="entry-title">Our Services</span>
-        <div class="text">
-        	<a href="/get-work/">Get Work</a><br />
-        	<a href="/hire-freelancer/">Hire Freelancer</a><br />
-        	<a href="/gallery/">Gallery</a><br />
-        	<a href="/affiliate-program/">Affiliate Program</a><br />
-        </div>
-  	</div>
-    <div class="entry">
-        <span class="entry-title">Connect With Us</span>
-        <div class="text">
-        <a href="http://www.facebook.com/pages/LancedIn/">
-        	<img src="{{ MEDIA_URL }}img/ico-facebook.png" style="float: left;" title="Likes our page on Facebook" width="26" height="26" />
-        </a>
-        <div style="clear:both;"></div>
-        <p>Become a fan of LancedIn</p><br />
-        <a href="http://twitter.com/lancedin">
-        	<img src="{{ MEDIA_URL }}img/ico-twitter.png" style="float: left;" title="@lancedin" width="26" height="26" />
-        </a>
-        <div style="clear:both;"></div>
-        <p>Follow us on Twitter</p><br />
-        <a href="/subscribe/">
-        	<img src="{{ MEDIA_URL }}img/ico-email.png" style="float: left;" title="Subscribe to get updates" width="26" height="26" />
-        </a>
-        <div style="clear:both;"></div>
-        <p>Subscribe our newsletter</p>
-        </div>
-  	</div>
 </div>
 
-<div class="footer">
-	<p>&copy; 2013 LancedIn, Inc. - All Rights Reserved.</p>
-</div>
-<div class="clear"></div>
+{% include "footer.html" %}
 
 </body>
 </html>

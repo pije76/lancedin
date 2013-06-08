@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+<p>
+<a href="/find-job/">Back to the list of my jobs</a>
+/ <a href="/find-job/edit/{{ job.id }}/">Edit</a>
+/ <a href='/find-job/delete/{{ job.id }}'>Delete</a>
+</p>
+
+<ul>
+    {% for job in jobdetail %}
+    <li>
+        <h3>{{ job.title }}</h3>
+        <br />
+        {{ job.description }}
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
+{% endblock %}

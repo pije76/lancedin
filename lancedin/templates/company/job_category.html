@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block head_title %}Viewing category {{ category.title }}{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
+
+{% block content %}
+<h2>Categories</h2>
+{% if categories %}
+<ul>
+    {% for category in categories %}
+    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>There are no jobs.</p>
+{% endif %}
+
+<h2>Jobs</h2>
+{% if jobs %}
+<ul>
+    {% for job in jobs %}
+    <li><a href="{{ job.get_absolute_url }}">{{ job.title }}</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+
+<p>There are no jobs.</p>
+{% endif %}
+
+{% endblock %}

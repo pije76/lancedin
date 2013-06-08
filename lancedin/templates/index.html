@@ -1,85 +1,108 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block left %}
-<div class="well">
-<div class="left-h1">
-<h1>Get the skilled freelancer.</h1>
-</div>
-<div class="left-h2">
-<h1>Get the job done!</h1>
-</div>
-<ol>
-	<li><b>You need your project done.</b><br />Post your job for free and attract the right freelancers with perfect skills.</li>
-	<li><b>Review proposals, choose a freelancer.</b><br />Hire in minutes and get jobs done faster.</li>
-	<li><b>Manage and collaborate online.</b><br />View the job progress in real time.</li>
-	<li><b>Pay only for results.</b><br />Release funds when milestones are met.</li>
-</ol>
-<br />
-<a href="/client/signup/"><button class="btn btn-large btn-info" type="button">Post Your Job. It's Free!</button></a>
-</div>
-{% endblock %}
+{% block title %}Home | {{ block.super }}{% endblock%}
 
-{% block center %}
-<div class="well">
-<div class="center-h1">
-<h1>Get the perfect job.</h1>
-</div>
-<div class="center-h2">
-<h1>Get the payment fast!</h1>
-</div>
-<ol>
-<li><b>You find a great client.</b><br />Create your profile for free that stands out.</li>
-<li><b>Find your passionate works.</b><br />Submit your proposals and get hired.</li>
-<li><b>Collaborate online.</b><br />Use real-time feedback to do great work.</li>
-<li><b>Guaranteed Payment.</b><br />LANCEDINers™ Payment Protection ensures you get paid for all the work you complete.</li>
-</ol>
-<br />
-<a href="/freelancer/signup/"><button class="btn btn-large btn-info" type="button">Want a Job? Create a Profile!</button></a>
-</div>
-{% endblock %}
+{% block content %}
+<div class="container-fluid">
 
-{% block right %}
-<div class="well">
-<div class="right-h1">
-<h1>Sell your portfolio.</h1>
-</div>
-<div class="right-h2">
-<h1>Get a higher payment!</h1>
-</div>
-<ol>
-<li><b>You have design or code &amp; want to sell.</b><br />Create your gallery that stands out.</li>
-<li><b>Upload your portfolio.</b><br />Create a great gallery and let's the clients to view your portfolio.</li>
-<li><b>Manage gallery online.</b><br />View the progress of selling in real time.</li>
-<li><b>Pay only for items are sold.</b><br />Release funds when item are delivered.</li>
-</ol>
-<br />
-<a href="/gallery/signup/"><button class="btn btn-large btn-info" type="button">Upload &amp; Sell Your Portfolio!</button></a>
-</div>
-{% endblock %}
+    <div class="row-fluid">
 
-{% block bottom %}
-<div id="how-it-works">
-<div class="well">
-<div class="row-fluid">
-<div class="span4">
-<img src="{{ MEDIA_URL }}img/how-it-work-1.png" style="float: left;" title="Hire on demand" width="66" height="66" />
-<a href="/how-it-works/"><h2>Hire on demand</h2></a>
-<p>With a huge amount of talent, you're will to find just the right Freelancer and build a flexible workforce based on their skills, ratings, and reviews.</p>
-</div><!-- /.span4 -->
+        <div class="span4">
+            {% block left %}
+            <div class="well">
+                <div class="left-h1">
+                    <h1>Get the skilled freelancer.</h1>
+                </div>
+                <div class="left-h2">
+                    <h1>Get the job done!</h1>
+                </div>
+                <ol>
+                    <li><b>You need your project get done.</b><br />Post your job for free and attract the right freelancers with perfect skills.</li>
+                    <li><b>Review proposals, choose a freelancer.</b><br />Hire in minutes and get jobs done faster.</li>
+                    <li><b>Manage and collaborate online.</b><br />View the job progress in real time.</li>
+                    <li><b>Pay only for results.</b><br />Release funds when milestones are met.</li>
+                </ol>
+                <br />
+                <a href="/client/signup/"><button class="btn btn-large btn-info" type="button">Post Your Job. It's Free!</button></a>
+            </div>
+            {% endblock %}
+        </div>
 
-<div class="span4">
-<img src="{{ MEDIA_URL }}img/how-it-work-2.png" style="float: left; margin-left:10px;" title="Manage the work" width="66" height="66" />
-<a href="/how-it-works/"><h2>Manage the work</h2></a>
-<p>Manage teams from your desktop and see work-in-progress screenshots, time sheets, and daily logs using our seamless project management tools.</p>
-</div><!-- /.span4 -->
+        <div class="span4">
+            {% block center %}
+            <div class="well">
+                <div class="center-h1">
+                    <h1>Get the perfect job.</h1>
+                </div>
+                <div class="center-h2">
+                    <h1>Get the payment fast!</h1>
+                </div>
+                <ol>
+                    <li><b>You find a great client or want a job.</b><br />Create your profile for free that stands out.</li>
+                    <li><b>Find your passionate works.</b><br />Submit your proposals and get hired.</li>
+                    <li><b>Collaborate online.</b><br />Use real-time feedback to do great work.</li>
+                    <li><b>Guaranteed Payment.</b><br />LANCEDINers™ Payment Protection ensures you get paid for all the work you complete.</li>
+                </ol>
+                <br />
+                <a href="/freelancer/signup/"><button class="btn btn-large btn-info" type="button">Want a Job? Create a Profile!</button></a>
+            </div>
+            {% endblock %}
+        </div>
 
-<div class="span4">
-<img src="{{ MEDIA_URL }}img/how-it-work-3.png" style="float: left; margin-left:25px;" title="Pay with ease" width="66" height="66" />
-<a href="/how-it-works/"><h2>Pay with ease</h2></a>
-<p>Payment is simple and fast once your project is complete. For added protection, rest assured with safe global payments and the LANCEDINers™.</p>
-</div><!-- /.span4 -->
-</div>
-</div>
+        <div class="span4">
+            {% block right %}
+            <div class="well">
+                <div class="right-h1">
+                    <h1>Sell the great portfolio.</h1>
+                </div>
+                <div class="right-h2">
+                    <h1>Get the higher payment!</h1>
+                </div>
+                <ol>
+                    <li><b>You have design or code &amp; want to sell.</b><br />Create your gallery that stands out.</li>
+                    <li><b>Upload your portfolio.</b><br />Create a great gallery and let's the clients to view your portfolio.</li>
+                    <li><b>Manage gallery online.</b><br />View the progress of selling in real time.</li>
+                    <li><b>Pay only for items are sold.</b><br />Release funds when item are delivered.</li>
+                </ol>
+                <br />
+                <a href="/gallery/signup/"><button class="btn btn-large btn-info" type="button">Upload &amp; Sell Your Portfolio!</button></a>
+            </div>
+            {% endblock %}
+        </div>
+
+    </div>
+
+    <div class="row-fluid">
+        <div class="span12">
+            {% block bottom %}
+            <div id="how-it-works">
+                <div class="well">
+                    <div class="row-fluid">
+
+                        <div class="span4">
+                            <img src="{{ MEDIA_URL }}img/how-it-work-1.png" style="float: left;" title="Hire on demand" width="66" height="66" />
+                            <a href="/how-it-works/"><h2>Hire on demand</h2></a>
+                            <p>With a huge amount of talent, you're will to find just the right Freelancer and build a flexible workforce based on their skills, ratings, and reviews.</p>
+                        </div><!-- /.span4 -->
+
+                        <div class="span4">
+                            <img src="{{ MEDIA_URL }}img/how-it-work-2.png" style="float: left; margin-left:10px;" title="Manage the work" width="66" height="66" />
+                            <a href="/how-it-works/"><h2>Manage the work</h2></a>
+                            <p>Manage teams from your desktop and see work-in-progress screenshots, time sheets, and daily logs using our seamless project management tools.</p>
+                        </div><!-- /.span4 -->
+
+                        <div class="span4">
+                            <img src="{{ MEDIA_URL }}img/how-it-work-3.png" style="float: left; margin-left:25px;" title="Pay with ease" width="66" height="66" />
+                            <a href="/how-it-works/"><h2>Pay with ease</h2></a>
+                            <p>Payment is simple and fast once your project is complete. For added protection, rest assured with safe global payments and the LANCEDINers™.</p>
+                        </div><!-- /.span4 -->
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+
 </div>
 {% endblock %}

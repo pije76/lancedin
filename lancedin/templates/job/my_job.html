@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+	<h2>List of Flows</h2>
+	
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Description</th>
+	  </tr>
+	  {% for tag in myflowlist %}
+	    <tr>
+	      <td><a href="{{ flow.get_absolute_url }}">{{ flow.title }}</a></td>
+	      <td>{{ flow.description }}</td>
+	    </tr>
+	  {% endfor %}
+	</table>
+	{% endblock %}
+</div>
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}

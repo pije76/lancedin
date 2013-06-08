@@ -15,10 +15,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        #'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'lancedin.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'USER': 'pije76',                      # Not used with sqlite3.
+        'PASSWORD': 'tratap60',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -83,6 +84,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -136,46 +138,65 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.comments',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'django.contrib.humanize',
-
-    # Django WP Admin must be before django.contrib.admin
-    'wpadmin',
-    'wpadmin.menu',
-    'wpadmin.dashboard',
+    'django.contrib.gis',
 
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+
+    'company',
+    'freelancer',
     'profile',
-    'client',
+    'job',
+
     #'classifieds',
-    'category',
+    #'taxonomy',
+    #'category',
     #'categories',
     #'categories.editor',
     #'mptt',
-    'debug_toolbar',
-    'ratings',
-    'bootstrapform',
+    #'mpttmenu',
+    #'django_mptt_admin',
+    #'commons',
+    #'wmd',
+    #'pin', #pinterest
+    #'daddy_avatar', #pinterest
+    #'sorl.thumbnail', #pinterest
+
+    #'country_utils',
+    #'cities',
+    #'cities_light',
+    #'countries',
+
+    #'pybb',
+
+    #'bootstrapform',
     #'userenabootstrap',
     'userena',
     'guardian',
     #'registration',
-    #'profiles',
-    #'tagging',
-    #'pin', #pinterest
-    #'daddy_avatar',
-    'sorl.thumbnail',
-    #'taggit',
-    #'compressor',
-    #'paypal.standard.ipn',
+    #'profile',
+
     'haystack',
     'celery_haystack',
     'south',
-    #'country_utils',
-    #'pybb',
+    'debug_toolbar',
+    'compressor', #pinterest
+
+    'tagging',
+    'tagging_autocomplete_tagit',
+    'masonry',
+    #'editable',
+    #'taggit', #pinterest
+    #'compressor',
+    #'paypal.standard.ipn',
+    #'ratings',
+    #'reputation',
     #'captcha',
     #'contact_form',
     #'tinymce',
@@ -314,18 +335,23 @@ TINYMCE_DEFAULT_CONFIG = {
 }
 TINYMCE_SPELLCHECKER = True
 
-WPADMIN = {
-    'admin': {
-        'title': 'Django admin panel',
-        'menu': {
-            'top': 'wpadmin.menu.menus.TopMenu',
-            'left': 'wpadmin.menu.menus.LeftMenu',
-        },
-        'dashboard': {
-            'breadcrumbs': True,
-        },
-    },
-}
+REPUTATION_MAX_LOSS_PER_DAY = 200
+REPUTATION_MAX_GAIN_PER_DAY = 200
+REPUTATION_PERMISSONS = {'voting.can_vote_up': 50,
+                         'voting.can_vote_down': 150}
+
+# Django-Cities Configuration #
+#CITIES_FILES = {
+#    'city': {
+#       'filename': 'cities1000.zip',
+#       'urls':     ['http://download.geonames.org/export/dump/'+'{filename}']
+#    },
+#}
+#CITIES_LOCALES = ['en', 'LANGUAGES']
+#CITIES_POSTAL_CODES = ['US']
+#CITIES_PLUGINS = [
+#    'cities.plugin.postal_code_ca.Plugin',  # Canada postal codes need region codes remapped to match geonames
+#]
 
 # Django-Categories Configuration #
 #CATEGORIES_SETTINGS = {
@@ -336,6 +362,12 @@ WPADMIN = {
 #        ),
 #    }
 #}
+
+# Django-MPTT Configuration
+# default is 10 pixels
+MPTT_ADMIN_LEVEL_INDENT = 20
+
+APPEND_SLASH = True
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL

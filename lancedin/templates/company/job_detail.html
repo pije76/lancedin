@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+<p>
+<a href="/job/">Back to the list of my jobs</a>
+{% if user.is_authenticated %}
+/ <a href="/job/edit/{{ job.id }}/">Edit</a>
+/ <a href='/job/delete/{{ job.id }}'>Delete</a>
+{% endif %}
+</p>
+
+<h4>{{ job.title }}</h4>
+by <a href="{% url userena_profile_detail user.username %}">{{ job.user }}</a> on {{ job.creation_date }}
+
+<br />
+<table>
+	<tr>
+		<th>Description</th>
+		<th>Overall Rating</th>
+	</tr>
+
+	<tr>
+		<td>
+			{{ job.description }}
+			<br />
+			URL: <a href="{{ job.url }}">{{ job.url }}</a>
+		</td>
+
+	</tr>
+</table>
+</div>
+{% endblock %}
