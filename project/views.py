@@ -8,7 +8,7 @@ import json
 from models import Project, Category
 
 #from mptt.templatetags.mptt_tags import cache_tree_children
-from haystack.query import SearchQuerySet
+#from haystack.query import SearchQuerySet
 
 
 # Create your views here.
@@ -54,7 +54,7 @@ def project_detail(request, slug, category):
 #    return object_list(request, queryset=Category.objects.all(), paginate_by=20, template_name='project/project_list.html', extra_context={'category': category})
 
 
-def project_search(request):
+#def project_search(request):
 #    results = SearchQuerySet().autocomplete(request.GET.get('q', ''))  # Django-Haystack 1.x with Ajax Autocomplete
-    results = SearchQuerySet().auto_query(request.GET.get('q', ''))  # Django-Haystack 2.x with Ajax Autocomplete
-    return HttpResponse(json.dumps(results[:5]), content_type='application/json')
+#    results = SearchQuerySet().auto_query(request.GET.get('q', ''))  # Django-Haystack 2.x with Ajax Autocomplete
+#    return HttpResponse(json.dumps(results[:5]), content_type='application/json')
