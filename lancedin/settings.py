@@ -193,7 +193,7 @@ INSTALLED_APPS = (
     #'registration',
     #'profile',
 
-    'haystack',
+    #'haystack',
     #'celery_haystack',
     'south',
     'debug_toolbar',
@@ -298,15 +298,15 @@ LOGOUT_URL = '/profile/signout/'
 #HAYSTACK_SEARCH_ENGINE = 'solr'
 #HAYSTACK_SEARCH_ENGINE = 'dummy' # Test For Ajax AutoComplete
 #HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8080/solr',
-        'TIMEOUT': 60 * 5,
-        'INCLUDE_SPELLING': True,
-        'BATCH_SIZE': 100,
-    },
-}
+#HAYSTACK_CONNECTIONS = {
+#    'default': {
+#        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+#        'URL': 'http://127.0.0.1:8080/solr',
+#        'TIMEOUT': 60 * 5,
+#        'INCLUDE_SPELLING': True,
+#        'BATCH_SIZE': 100,
+#    },
+#}
 
 # Debug Toolbar configuration #
 DEBUG_TOOLBAR_PANELS = (
