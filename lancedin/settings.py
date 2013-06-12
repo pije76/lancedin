@@ -295,9 +295,9 @@ LOGOUT_URL = '/profile/signout/'
 
 # Haystack + SOLR configuration #
 #HAYSTACK_SITECONF = 'lancedin.search_indexes'
-HAYSTACK_SEARCH_ENGINE = 'solr'
+#HAYSTACK_SEARCH_ENGINE = 'solr'
 #HAYSTACK_SEARCH_ENGINE = 'dummy' # Test For Ajax AutoComplete
-HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
+#HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
