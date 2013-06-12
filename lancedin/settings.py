@@ -205,7 +205,7 @@ INSTALLED_APPS = (
     #'taggit', #pinterest
     #'compressor',
     #'paypal.standard.ipn',
-    'tastypie',
+    #'tastypie',
 )
 
 # A sample logging configuration. The only tangible logging
