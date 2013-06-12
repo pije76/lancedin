@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+	{% if user.is_authenticated %}
+
+	<h3>Your project was deleted.</h3>
+	{% endif %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}

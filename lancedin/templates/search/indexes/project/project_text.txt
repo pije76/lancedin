@@ -1,0 +1,12 @@
+{{ object.title }}
+{{ object.slug }}
+{{ object.category }}
+{{ object.skill }}
+{{ object.description }}
+{{ object.project_type }}
+{{ object.rate }}
+{{ object.budget }}
+{{ object.workload }}
+{{ object.duration }}
+{{ object.create_date }}
+{{ object.company }}

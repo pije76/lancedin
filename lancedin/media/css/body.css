@@ -1,0 +1,12 @@
+body {
+  font-size: 12px;
+  font-family: sans-serif;
+/*  background:#fff url(../img/bg_gradient.png) repeat-x 0 0;
+  background-color: #EBF0F7;
+  background-color: #86B2B4;
+  background-color: #4AC4A7;*/
+  background-color: #313947;
+  color: #333333;
+  line-height: 20px;
+  margin: 0;
+}

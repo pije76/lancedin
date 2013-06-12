@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load readmore %}
+
+{% block content %}
+<div class="container-fluid">
+    <div id="masonrycontainer">
+        {% if projectlist %}
+        {% for project in projectlist %}
+
+        <div class="itemSelector"> <!--- itemSelector (perulangan) -->
+
+            <div class="itemTitle">
+                <a href="{{ project.slug }}">{{ project.title }}</a>
+                <br />
+            </div><!--End of itemTitle-->
+
+            <div class="itemDescription">
+                <p>{{ project.description }}</p>
+            </div><!--End of itemDescription-->
+
+        </div><!--End of itemSelector-->
+
+        {% endfor %}
+        {% else %}
+        <p>No Projects Available</p>
+        {% endif %}
+    </div><!--End of masonrycontainer-->
+</div>
+<script>
+$(function()
+    {
+        $('#masonrycontainer').masonry(
+            {
+                itemSelector: '.itemSelector',
+                columnWidth : 395
+            });
+    });
+</script>
+
+<script>
+//$(function()
+//    {
+//        $('#masonrycontainer').isotope(
+//            {
+//                layoutMode: 'masonryHorizontal',
+//                itemSelector: '.itemSelector',
+//                masonryHorizontal : {
+//                    rowHeight : 270
+//                }
+//            });
+//    });
+</script>
+
+<script>
+// you can override default options globally, so they apply to every .expander() call
+//$.expander.defaults.slicePoint = 120;
+
+//$(document).ready(function() {
+  // simple example, using all default options unless overridden globally
+//  $('div.expandable p').expander();
+
+  // *** OR ***
+
+  // override default options (also overrides global overrides)
+//  $('div.expandable p').expander({
+//    slicePoint:       80,  // default is 100
+//    expandPrefix:     ' ', // default is '... '
+//    expandText:       '[...]', // default is 'read more'
+//    collapseTimer:    5000, // re-collapses after 5 seconds; default is 0, so no re-collapsing
+//    userCollapseText: '[^]'  // default is 'read less'
+//  });
+//});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('div.itemDescription p').expander({
+        slicePoint: 100, // default is 100
+        expandText: 'show more', // default is 'read more'
+        userCollapseText: 'show less', // default is 'read less'
+        expandSpeed: 0, // default is 0
+        afterExpand: function() {
+            $(this).find('.details').css({display: 'inline'});
+        }
+    });
+});
+</script>
+
+{% endblock %}

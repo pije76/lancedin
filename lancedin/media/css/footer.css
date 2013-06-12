@@ -1,0 +1,128 @@
+.centerer {
+    width: auto;
+    margin: 20px auto 0 auto;
+    /* background-color: #0D1E27; */
+    /* background-color: #526476; */
+    background-color: #444444;
+    box-shadow: 0 0 8px 1px #2D2D2D;
+    padding: 20px 0 20px 220px;
+    color: #d2d2d2;
+    height: 200px;
+}
+
+.centerer .row .span3 {
+    width: 330px;
+    margin: 0 0;
+    display: inline-block;
+    vertical-align: text-top;
+    /*background: url(img/bottom_sep_bg.png) top right repeat-y;*/
+    padding: 10px 0;
+}
+
+.centerer .row .span3 .text a {
+    vertical-align: text-bottom;
+    position: relative;
+    top: 5px;
+    left: 0px;
+    margin: -10px 0 4px 0;
+    float: left;
+}
+
+.centerer .row .span3 .text a.facebook{
+    background: url(../img/ico-facebook.png);
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+.centerer .row .span3 .text a.facebook:hover{
+    background: url(../img/ico-facebook-hover.png);
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+.centerer .row .span3 .text a.twitter{
+    background: url(../img/ico-twitter.png);
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+.centerer .row .span3 .text a.twitter:hover{
+    background: url(../img/ico-twitter-hover.png);
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+.centerer .row .span3 .text a.subscribe{
+    background: url(../img/ico-email.png);
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+.centerer .row .span3 .text a.subscribe:hover{
+    background: url(../img/ico-email-hover.png);
+    background-size: 26px;
+    width: 26px;
+    height: 26px;
+}
+
+.centerer .row .span3 .entry-title {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Akko W01 Regular',"Lucida Grande","Segoe UI",Verdana,Helvetica,Arial,sans-serif;
+    padding: 0px 0px 15px 2px;
+    display: inline-block;
+    /* color: #86B2B4; */
+    color: #4F9BD4;
+}
+
+.centerer .row .span3 .text a:hover{
+    color: #4F9BD4;
+}
+
+.centerer .row .span3 .text a{
+    color: #d2d2d2;
+}
+
+.centerer .row .span3 .text {
+    text-align: justify;
+    padding: 0px 0px 0px 5px;
+}
+
+.centerer .row .span3 .text p {
+    margin: -20px 0 0 30px;
+}
+
+
+.footer {
+    box-shadow:0 2px 0 #86B2B4,inset 0 1px 0 #999999;
+    bottom: 0px;
+    padding-top: 20px;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: #2d2d2d;
+    color: #d2d2d2;
+}
+
+.footer .right a{
+    color: #d2d2d2;
+}
+
+.footer .right a:hover{
+    color: #4F9BD4;
+}
+
+.footer .left {
+  margin: 5px 0 10px 150px;
+  float: left;
+}
+
+.footer .right {
+  margin: 5px 150px 0 0;
+  float: right
+}

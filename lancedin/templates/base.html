@@ -4,28 +4,42 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block page_title %}The Right Place To Find Clients, Freelancers, &amp; Portfolios In The World! - LancedIn{% endblock %}</title>
+    <title>
+        {% block title %}
+        The Right Place To Find Clients, Freelancers, &amp; Portfolios In The World! - LancedIn
+        {% endblock %}
+    </title>
     <meta name="description" content="">
     <meta name="author" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <link rel="shortcut icon" href="{{ MEDIA_URL }}img/favicon.ico" type="image/x-icon" />
+
 	<link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/reset.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/header.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/body.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/footer.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="/media/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.masonry.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.masonry.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.isotope.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.expander.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.expander.js"></script>
+    <script type="text/javascript" src="/media/js/tiny_mce/tiny_mce.js"></script>
 
     <style type="text/css">
-        body { padding-top: 60px; }
+        body { padding-top: 40px; }
         label { display: block; }
         .errorlist { padding-left: 0; color: red; }
         .helptext { display: block; color: #666; font-size: small; }
     </style>
-
-    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
-	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
-	<script type="text/javascript" src="{{ MEDIA_URL }}js/bootstrap.js"></script>
-	<script type="text/javascript" src="{{ MEDIA_URL }}js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="{{ MEDIA_URL }}js/tiny_mce/tiny_mce.js"></script>
 
 	<script type="text/javascript">
 		tinyMCE.init({
@@ -40,7 +54,8 @@
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    {% block extra_head %}{% endblock %}
+    {% block extra_head %}
+    {% endblock %}
 </head>
 
 <body>
@@ -48,14 +63,11 @@
 {% include "header.html" %}
 
 <div class="container">
-<div class="content">
-{% block content %}
-{{ flatpage.content|safe }}
-{% endblock %}
-</div>
+    {% block content %}
+    {{ flatpage.content|safe }}
+    {% endblock %}
 </div>
 
 {% include "footer.html" %}
-
 </body>
 </html>

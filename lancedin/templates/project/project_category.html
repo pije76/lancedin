@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load mptt_tags %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="well">
+        <h2>Find Project</h2>
+    {% if user.is_authenticated %}
+    <ul>
+        {% recursetree projectcategory %}
+        <li>
+            <div class="categoryTitle"></div>
+            <a href="{{ node.slug }}">{{ node.title }}</a> ({{ node.get_descendant_count }})
+            {% if not node.is_leaf_node %}
+            <ul class="children">{{ children }}</ul>
+            {% endif %}
+        </li>
+        {% endrecursetree %}
+    </ul>
+    </div>
+
+    {% else %}
+
+    <div class="well">
+        <div class="span3">Span3</div>
+        <div class="span3">Span3</div>
+        <div class="span3">Span3</div>
+    </div>
+    <div class="well">
+        <div class="span6">
+            <h3>Over thousand projects were posted in the first half of 2013</h3>
+        </div>
+        <div class="span3">
+            <a href="/signup/">Sign up if not yet have account</a>
+        </div>
+    </div>
+{% endif %}
+</div>
+
+{% endblock %}
+<div style="clear: both;"></div>

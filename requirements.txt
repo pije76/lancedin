@@ -33,7 +33,7 @@ django-debug-toolbar==0.9.4
 django-endless-pagination==2.0
 django-extensions==1.0.3
 django-guardian==1.1.0
-django-haystack==1.2.7
+django-haystack==2.0.0
 django-images==0.3
 django-mailer==0.1.0
 django-messages==0.4.4

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="well">
+{% if project %}
+<h2>Editing '{{ project.title }}'</h2>
+{% else %}
+<h2>Adding new Project</h2>
+{% endif %}
+
+<form method="POST" action=".">{% csrf_token %}
+	<table>
+	{{ form }}
+	<tr>
+		<td colspan="2">
+			<input type="submit" name="edit" value="Save" />
+		</td>
+	</tr>
+	</table>
+</form>
+</div>
+{% endblock %}

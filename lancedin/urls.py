@@ -1,21 +1,21 @@
 from django.conf.urls import patterns, include, url
 from django.conf import settings
 
-from job.models import Job
+from project.models import Project
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 info_dict = {
-    'queryset': Job.objects.filter(),
+    'queryset': Project.objects.filter(),
     'date_field': 'creation_date',
 }
 
 urlpatterns = patterns(
     '',
 #   url(r'^lancedin/', include('lancedin.foo.urls')),
-    url(r'^$', 'job.views.index', name='index'),
+    url(r'^$', 'project.views.index', name='index'),
 #    (r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}, 'index'),
 #    (r'', include('django.contrib.flatpages.urls')),
 
@@ -29,13 +29,13 @@ urlpatterns = patterns(
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True, }),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True, }),
 
-    (r'^find-job/', include('job.urls')),
+    (r'^find-project/', include('project.urls')),
 #    (r'^find-freelancer/', include('freelancer.urls')),
 #    (r'^how-it-works/', include('freelancer.urls')),
-#   url(r'^myjob/$', direct_to_template, {'template': 'company/my_job.html'}, name='myjoblist'),
+#   url(r'^myproject/$', direct_to_template, {'template': 'company/my_project.html'}, name='myprojectlist'),
 
-#    (r'^tags/$', 'job.views.tags'),
-#    (r'^tag/([-_A-Za-z0-9]+)/$','job.views.with_tag'),
+#    (r'^tags/$', 'project.views.tags'),
+#    (r'^tag/([-_A-Za-z0-9]+)/$','project.views.with_tag'),
 #    (r'^tagging_autocomplete_tagit/', include('tagging_autocomplete_tagit.urls')),
 
     (r'^search/', include('haystack.urls')),

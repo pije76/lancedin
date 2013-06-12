@@ -1,0 +1,90 @@
+.nav-collapse a.brand{
+    text-transform: uppercase;
+    font-family: 'Gotham Rounded A','Gotham Rounded B',"proxima-nova-soft",sans-serif;
+    font-size: 40px;
+    padding-top: 70px;
+    color: #0088CC;
+}
+
+.container .nav-collapse a.brand:hover {
+    text-shadow: 0px 0px 7px #ffffff;
+}
+
+.navbar {
+  position: fixed;
+  width:100%;
+  clear: both;
+  /*font-family: "MuseoSans-300",arial,sans-serif;*/
+}
+
+.navbar-inner {
+/*  background: #34495E; */
+/*  background: #343131; */
+/*  background: #2d2d2d; */
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: #1B1B24;
+  background-image: none;
+  background-origin: padding-box;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-size: auto auto;
+  border-radius: 0 0 3px 3px;
+  opacity: 0.85;
+  padding: 0;
+  box-shadow:0 1px 3px #313947,inset 0 -1px 0 #313947;
+}
+
+.container .nav-collapse ul.nav{
+    /* margin-top: 70px; */
+}
+
+.navbar-inner .container{
+  height: 120px;
+  box-shadow:0 1px 0 #313947,inset 0 -1px 0 #313947;
+}
+
+.navbar-fixed-top .nav .active > a:hover {
+  background: inherit;
+  color: #b6b6b6;
+  font-weight: bold;
+}
+
+.navbar-fixed-top .nav  > li > a {
+  padding-top: 90px;
+  color: #ffffff;
+  font-size: 16px;
+  text-shadow: 0 -1px 0 #000000;
+  /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); */
+}
+
+.navbar-fixed-top .nav  > li > a:hover {
+  padding-top: 84px;
+  /* color: #2D2D2D;
+  color: #358CCE; */
+  color: #fff;
+  background-color: #313947;
+  font-size: 16px;
+  border-top:6px solid #358CCE;
+  /*box-shadow: 0px 8px 8px -4px rgba(0, 0, 0, 0.6) inset;*/
+  height: 18px;
+  /*border-top:3px solid #2F96B4;*/
+  /*border-top:3px solid #5A5D5F;*/
+  /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25); */
+  text-shadow: 0 -1px 0 #000000;
+}
+
+.navbar .nav li .dropdown-menu a:hover
+{
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #313947;
+}
+
+.dropdown-menu li > a:hover,
+.dropdown-menu .active > a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #2d2d2d;
+}
+

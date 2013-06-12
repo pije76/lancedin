@@ -138,7 +138,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.comments',
+    #'django.contrib.comments',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'django.contrib.humanize',
@@ -152,14 +152,14 @@ INSTALLED_APPS = (
     'company',
     'freelancer',
     'profile',
-    'job',
+    'project',
 
     #'classifieds',
     #'taxonomy',
     #'category',
-    #'categories',
-    #'categories.editor',
-    #'mptt',
+    'categories',
+    'categories.editor',
+    'mptt',
     #'mpttmenu',
     #'django_mptt_admin',
     #'commons',
@@ -167,6 +167,17 @@ INSTALLED_APPS = (
     #'pin', #pinterest
     #'daddy_avatar', #pinterest
     #'sorl.thumbnail', #pinterest
+
+    #'ratings',
+    #'reputation',
+    #'captcha',
+    #'contact_form',
+    #'tinymce',
+    #'isotope', #pinterest
+    #'jquery',
+    #'html5accordion',
+    #'masonry', #pinterest
+    'endless_pagination', #pinterest
 
     #'country_utils',
     #'cities',
@@ -183,26 +194,18 @@ INSTALLED_APPS = (
     #'profile',
 
     'haystack',
-    'celery_haystack',
+    #'celery_haystack',
     'south',
     'debug_toolbar',
-    'compressor', #pinterest
+    'compressor',  #pinterest
 
     'tagging',
     #'tagging_autocomplete_tagit',
-    #'masonry',
     #'editable',
     #'taggit', #pinterest
     #'compressor',
     #'paypal.standard.ipn',
-    #'ratings',
-    #'reputation',
-    #'captcha',
-    #'contact_form',
-    #'tinymce',
-    #'isotope',
-    #'jquery',
-    #'endless_pagination',
+    'tastypie',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -280,24 +283,30 @@ LOGOUT_URL = '/profile/signout/'
 #RECAPTCHA_PRIVATE_KEY = '6Ld51tsSAAAAAI75ZSipL10yqx21brhy_BeKCmXT '
 
 # Haystack + Whoosh configuration #
-HAYSTACK_SITECONF = 'lancedin.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'index.whoosh')
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
-    },
-}
+#HAYSTACK_SITECONF = 'lancedin.search_sites'
+#HAYSTACK_SEARCH_ENGINE = 'whoosh'
+#HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'index.whoosh')
 #HAYSTACK_CONNECTIONS = {
 #    'default': {
-#        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-#        'URL': 'http://localhost:9001/solr/default',
-#        'TIMEOUT': 60 * 5,
-#        'INCLUDE_SPELLING': True,
-#        'BATCH_SIZE': 100,
+#        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+#        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
 #    },
 #}
+
+# Haystack + SOLR configuration #
+HAYSTACK_SITECONF = 'lancedin.search_indexes'
+HAYSTACK_SEARCH_ENGINE = 'solr'
+#HAYSTACK_SEARCH_ENGINE = 'dummy' # Test For Ajax AutoComplete
+HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://127.0.0.1:8080/solr',
+        'TIMEOUT': 60 * 5,
+        'INCLUDE_SPELLING': True,
+        'BATCH_SIZE': 100,
+    },
+}
 
 # Debug Toolbar configuration #
 DEBUG_TOOLBAR_PANELS = (
@@ -357,7 +366,7 @@ REPUTATION_PERMISSONS = {'voting.can_vote_up': 50,
 #CATEGORIES_SETTINGS = {
 #    'M2M_REGISTRY': {
 #        'freelancer.Profile': 'category',
-#        'client.Job': (
+#        'company.Project': (
 #            {'name': 'category', 'related_name': 'category'},
 #        ),
 #    }
@@ -365,9 +374,10 @@ REPUTATION_PERMISSONS = {'voting.can_vote_up': 50,
 
 # Django-MPTT Configuration
 # default is 10 pixels
-MPTT_ADMIN_LEVEL_INDENT = 20
+#MPTT_ADMIN_LEVEL_INDENT = 20
 
 APPEND_SLASH = True
+READ_MORE_TEXT = 'Read more...'
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL

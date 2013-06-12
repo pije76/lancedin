@@ -5,10 +5,10 @@ from django.db.models.signals import post_save
 from userena.models import UserenaBaseProfile
 #from country_utils.fields import CountryField
 
+
 # Create your models here.
 class Profile(UserenaBaseProfile):
-
-    user =  models.OneToOneField(User, unique=True, verbose_name =('user'), related_name = '+')
+    user = models.OneToOneField(User, unique=True, verbose_name=('user'), related_name = '+')
     title = models.CharField("Title", max_length=80)
     first_name = models.CharField("First Name", max_length=80)
     last_name = models.CharField("Last Name", max_length=80)
@@ -23,6 +23,7 @@ class Profile(UserenaBaseProfile):
 
     class Meta:
         verbose_name = 'Freelancer'
+
 
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
