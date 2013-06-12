@@ -71,7 +71,7 @@ class Project (models.Model):
     slug = AutoSlugField(max_length=200, unique=True, help_text='Automatically built from the title.')
     category = models.ForeignKey('project.Category', related_name='categories')
 #    sub_category = models.ForeignKey('project.SubCategory')
-    skill = models.ManyToManyField('project.Skill')
+    skill = models.ForeignKey('project.Skill', blank=True)
     description = models.TextField("project Description")
     project_type = models.CharField("Project Type", max_length=60, choices=TYPE_CHOICES,)
     rate = models.CharField("Rate", max_length=60, choices=RATE_CHOICES,)
