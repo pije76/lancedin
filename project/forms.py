@@ -1,9 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 
-from models import Project, Category, SubCategory, Skill
+from models import Project, Category, Skill
 from tagging.forms import TagField
-from userena.forms import SignupForm
 
 
 class ProjectForm(forms.Form):
@@ -17,4 +16,4 @@ class ProjectForm(forms.Form):
     class Meta:
         model = Project
         exclude = ['creation_date']
-        fields = ('title', 'category', 'project_type', 'description', 'company', 'location')
+        fields = ('title', 'category', 'description')

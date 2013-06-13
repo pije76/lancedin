@@ -56,14 +56,14 @@
     height: 26px;
 }
 
-.centerer .row .span3 .text a.subscribe{
+.centerer .row .span3 .text a.email{
     background: url(../img/ico-email.png);
     background-size: 26px;
     width: 26px;
     height: 26px;
 }
 
-.centerer .row .span3 .text a.subscribe:hover{
+.centerer .row .span3 .text a.email:hover{
     background: url(../img/ico-email-hover.png);
     background-size: 26px;
     width: 26px;

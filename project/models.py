@@ -1,18 +1,24 @@
-from django.db import models
-from django.db.models import permalink, CharField, Model
+from django.db import models, connection
+from django.db.models import CharField, DateField, ForeignKey, Model, permalink, signals
 from django.template.defaultfilters import slugify
+from django.contrib.auth.models import User
+from django.contrib.admin import SimpleListFilter
+from django.utils.translation import ugettext_lazy as _
+from django.db.models.signals import post_save
+from django.utils.encoding import smart_unicode
 from django.utils.translation import ugettext_lazy as _
 from django.core import urlresolvers
 from django.core.urlresolvers import reverse
 from django.core.exceptions import *
-#from django.contrib.syndication.feeds import Feed
-#from django.contrib.sitemaps import Sitemap
+
 
 from tagging.fields import TagField
 from tagging.models import Tag
-from mptt.models import MPTTModel, TreeForeignKey
 #from tagging_autocomplete_tagit.models import TagAutocompleteTagItField
+from mptt.models import MPTTModel, TreeForeignKey
 from autoslug import AutoSlugField
+from haystack import indexes
+
 from datetime import datetime, timedelta
 
 TYPE_CHOICES = (
@@ -71,7 +77,7 @@ class Project (models.Model):
     slug = AutoSlugField(max_length=200, unique=True, help_text='Automatically built from the title.')
     category = models.ForeignKey('project.Category', related_name='categories')
 #    sub_category = models.ForeignKey('project.SubCategory')
-    skill = models.ManyToManyField('project.Skill', blank=True)
+    skill = models.ManyToManyField('project.Skill')
     description = models.TextField("project Description")
     project_type = models.CharField("Project Type", max_length=60, choices=TYPE_CHOICES,)
     rate = models.CharField("Rate", max_length=60, choices=RATE_CHOICES,)
@@ -84,6 +90,24 @@ class Project (models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def add_to_search_index(sender, instance=None, **kwargs):
+        try:
+            index = site.get_index(instance.__class__)
+        except:
+            return
+
+        index.backend.update(index, [instance])
+    signals.post_save.connect(add_to_search_index)
+
+    def delete_from_search_index(sender, instance=None, **kwargs):
+        try:
+            index = site.get_index(instance.__class__)
+        except:
+            return
+
+        index.backend.remove(instance)
+    signals.post_delete.connect(delete_from_search_index)
 
     @models.permalink
     def get_absolute_url(self):

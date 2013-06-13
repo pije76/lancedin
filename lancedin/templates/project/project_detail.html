@@ -2,22 +2,26 @@
 
 {% block content %}
 <div class="container-fluid">
-<div class="well">
-<p>
-<a href="/find-project/">Back to the list of my projects</a>
-/ <a href="/find-project/edit/{{ project.slug }}">Edit</a>
-/ <a href='/find-project/delete/{{ project.slug }}'>Delete</a>
-</p>
+    <div class="well">
+        <p>
+            <a href="/find-project/">Back to the list of my projects</a>
+            / <a href="/find-project/edit/{{ project.slug }}">Edit</a>
+            / <a href='/find-project/delete/{{ project.slug }}'>Delete</a>
+        </p>
 
-<ul>
-    {% for project in projectdetail %}
-    <li>
-        <h3>{{ project.title }}</h3>
-        <br />
-        {{ project.description }}
-    </li>
-    {% endfor %}
-</ul>
-</div>
+        <div class="projectDetail">
+            <div class="well">
+                {% for project in projectdetail %}
+                <div class="projectTitle">
+                    <h3>{{ project.title }}</h3>
+                    <br />
+                    Job Description
+                    <br />
+                    {{ project.description }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

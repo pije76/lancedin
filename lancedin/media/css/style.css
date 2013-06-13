@@ -115,14 +115,6 @@ button.button:hover, a.button:hover {
     background-color: #509BD4;
     border-radius: 3px 3px 3px 3px;
     opacity: 0.9;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    position: relative;
-    transition-delay: 0.2s, 0.2s;
-    transition-duration: 0.3s, 0.3s;
-    transition-property: height, top;
-    transition-timing-function: ease-in-out, ease-in-out;
-    line-height: 27px;
     padding: 12px 6px;
 }
 
@@ -143,7 +135,7 @@ button.button:hover, a.button:hover {
 /*    width:250px;
     font-weight:900;*/
     background:#0050CC;
-    font-variant:small-caps;
+/*    font-variant:small-caps;*/
     font-size:20px;
     margin: 0px 0px 0px 0px;
     clear: both;
@@ -182,46 +174,13 @@ button.button:hover, a.button:hover {
     -moz-border-radius: 5px;
     border-radius: 5px;*/
 
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
     background-color: #CCCCCC;
-
-    border-image-outset: 0 0 0 0;
-    border-image-repeat: stretch stretch;
-    border-image-slice: 100% 100% 100% 100%;
-    border-image-source: none;
-    border-image-width: 1 1 1 1;
-
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #CCCCCC;
-    border-left-style-ltr-source: physical;
-    border-left-style-rtl-source: physical;
-    border-left-style-value: solid;
-    border-left-width-ltr-source: physical;
-    border-left-width-rtl-source: physical;
-    border-left-width-value: 1px;
-
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #CCCCCC;
-    border-right-style-ltr-source: physical;
-    border-right-style-rtl-source: physical;
-    border-right-style-value: solid;
-    border-right-width-ltr-source: physical;
-    border-right-width-rtl-source: physical;
-    border-right-width-value: 1px;
-
     box-shadow: 0 3px 12px #DDDDDD;
     list-style-image: none;
     list-style-position: outside;
     list-style-type: none;
-
     overflow-x: hidden;
     overflow-y: hidden;
-
     width: 370px;
     margin: 8px 10px 17px 10px;
     border-top: 1px solid #CCCCCC;
@@ -244,10 +203,10 @@ button.button:hover, a.button:hover {
 /*    color:#000000; */
 }
 
-.categoryTitle{
+/*.categoryTitle{
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: #000;
+    background-color: #EBF0F7;
     background-image: none;
     background-origin: padding-box;
     background-position: 0 0;
@@ -259,3 +218,7 @@ button.button:hover, a.button:hover {
     margin-bottom: 24px;
     padding-top: 9px 10px 9px 16px;
 }
+
+.categoryTitle .column{
+    width: 30%;
+}*/

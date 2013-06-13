@@ -9,7 +9,7 @@ from models import Project, Category
 
 #from mptt.templatetags.mptt_tags import cache_tree_children
 #from haystack.query import SearchQuerySet
-
+from haystack.views import SearchView
 
 # Create your views here.
 def index(request):
@@ -58,3 +58,6 @@ def project_detail(request, slug, category):
 #    results = SearchQuerySet().autocomplete(request.GET.get('q', ''))  # Django-Haystack 1.x with Ajax Autocomplete
 #    results = SearchQuerySet().auto_query(request.GET.get('q', ''))  # Django-Haystack 2.x with Ajax Autocomplete
 #    return HttpResponse(json.dumps(results[:5]), content_type='application/json')
+
+#def search(req):
+#    return SearchView(template='search/search.html')(req)

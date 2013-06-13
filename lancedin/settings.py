@@ -157,8 +157,8 @@ INSTALLED_APPS = (
     #'classifieds',
     #'taxonomy',
     #'category',
-    'categories',
-    'categories.editor',
+    #'categories',
+    #'categories.editor',
     'mptt',
     #'mpttmenu',
     #'django_mptt_admin',
@@ -178,6 +178,7 @@ INSTALLED_APPS = (
     #'html5accordion',
     #'masonry', #pinterest
     'endless_pagination', #pinterest
+    'suit',
 
     #'country_utils',
     #'cities',
@@ -193,7 +194,7 @@ INSTALLED_APPS = (
     #'registration',
     #'profile',
 
-    #'haystack',
+    'haystack',
     #'celery_haystack',
     'south',
     'debug_toolbar',
@@ -293,9 +294,20 @@ LOGOUT_URL = '/profile/signout/'
 #    },
 #}
 
+#HAYSTACK + Whoosh configuration
+#HAYSTACK_SITECONF = 'lancedin.search_sites'
+#HAYSTACK_SEARCH_ENGINE = 'whoosh'
+#HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'index.whoosh')
+#HAYSTACK_CONNECTIONS = {
+#    'default': {
+#        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+#        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+#    },
+#}
+
 # Haystack + SOLR configuration #
-#HAYSTACK_SITECONF = 'lancedin.search_indexes'
-#HAYSTACK_SEARCH_ENGINE = 'solr'
+#HAYSTACK_SITECONF = 'project.search_indexes'
+#HAYSTACK_SEARCH_ENGINE = 'whoosh'
 #HAYSTACK_SEARCH_ENGINE = 'dummy' # Test For Ajax AutoComplete
 #HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
 #HAYSTACK_CONNECTIONS = {
@@ -307,6 +319,14 @@ LOGOUT_URL = '/profile/signout/'
 #        'BATCH_SIZE': 100,
 #    },
 #}
+
+HAYSTACK_URL = os.environ.get('WEBSOLR_URL', '')
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': HAYSTACK_URL,
+    },
+}
 
 # Debug Toolbar configuration #
 DEBUG_TOOLBAR_PANELS = (

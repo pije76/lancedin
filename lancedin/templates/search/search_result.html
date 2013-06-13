@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Result{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="well">
+        <h2>Search Results</h2>
+        {% if query %}
+        {% for result in page.object_list %}
+        <p><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></p>
+        {% empty %}
+        <p>No results found.</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

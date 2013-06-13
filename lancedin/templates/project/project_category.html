@@ -5,23 +5,49 @@
 {% block content %}
 <div class="container-fluid">
     <div class="well">
-        <h2>Find Project</h2>
-    {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
+        <h2>Browse for Projects</h2>
+        <div class="search">
+            <div class="input-append">
+                <form class="form-search" action="/search/" method="get">
+                    {{ form.as_table }}
+                    <b>Search Projects</b>
+                    <input class="span2" id="appendedDropdownButton" type="text" name="q" value="">
+                    <button type="submit" class="btn">Search</button>
+                    <div class="btn-group">
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">Category
+                            <span class="caret"></span>
+                        </button>
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">Job Type
+                            <span class="caret"></span>
+                        </button>
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">Location
+                            <span class="caret"></span>
+                        </button>
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">Workload
+                            <span class="caret"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <div class="well">
     <ul>
         {% recursetree projectcategory %}
         <li>
-            <div class="categoryTitle"></div>
-            <a href="{{ node.slug }}">{{ node.title }}</a> ({{ node.get_descendant_count }})
-            {% if not node.is_leaf_node %}
-            <ul class="children">{{ children }}</ul>
-            {% endif %}
+            <div class="categoryTitle">
+                <a href="{{ node.slug }}">{{ node.title }}</a> ({{ node.get_descendant_count }})
+                {% with node.get_children as projectcategory %}
+                <ul class="children">{{ children }}</ul>
+                {% endwith %}
+            </div>
         </li>
         {% endrecursetree %}
     </ul>
     </div>
 
     {% else %}
-
     <div class="well">
         <div class="span3">Span3</div>
         <div class="span3">Span3</div>
@@ -35,8 +61,21 @@
             <a href="/signup/">Sign up if not yet have account</a>
         </div>
     </div>
-{% endif %}
+    {% endif %}
+
+    </div>
 </div>
 
+<script>
+//$(function(){
+//    $('.categoryTitle').columnize({ columns: 3 });
+//});
+</script>
+
+<script>
+$(function(){
+$('.dropdown-toggle').dropdown()
+});
+</script>
 {% endblock %}
 <div style="clear: both;"></div>

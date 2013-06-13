@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load readmore %}
 
 {% block content %}
 <div class="container-fluid">
@@ -17,6 +16,10 @@
 
             <div class="itemDescription">
                 <p>{{ project.description }}</p>
+            </div><!--End of itemDescription-->
+
+            <div class="itemDetail">
+                <p>Company: Flag: Rating: Skill: </p>
             </div><!--End of itemDescription-->
 
         </div><!--End of itemSelector-->
