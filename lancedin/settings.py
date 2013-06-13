@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Django settings for lancedin project.
@@ -13,17 +14,30 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Heroku configuration #
+# Parse database configuration from $DATABASE_URL
+#DATABASES['default'] = dj_database_url.config()
+
+#POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
+#DATABASES = {
+#    'default': dj_database_url.config(default=os.environ[POSTGRES_URL])
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'lancedin.db',                      # Or path to database file if using sqlite3.
-        'USER': 'pije76',                      # Not used with sqlite3.
-        'PASSWORD': 'tratap60',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+    'default': dj_database_url.config(default='postgres://cnzjpbuzbpqcyc:opCQfs3M6ZCjnCJE7zLF7iuUov@ec2-23-21-130-189.compute-1.amazonaws.com:5432/d9qoc9bsgsnqkg')
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        #'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#        'NAME': 'lancedin.db',                      # Or path to database file if using sqlite3.
+#        'USER': 'pije76',                      # Not used with sqlite3.
+#        'PASSWORD': 'tratap60',                  # Not used with sqlite3.
+#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#    }
+#}
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -398,11 +412,6 @@ REPUTATION_PERMISSONS = {'voting.can_vote_up': 50,
 
 APPEND_SLASH = True
 READ_MORE_TEXT = 'Read more...'
-
-# Heroku configuration #
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
