@@ -42,7 +42,6 @@ django-mailer==0.1.0
 django-mptt==0.5.2
 django-notification==1.0
 django-pagination==1.0.7
-django-pure-pagination==0.2
 django-registration==0.8
 django-tag-parser==1.0.0
 django-tagging==0.3.1
