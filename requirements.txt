@@ -18,7 +18,6 @@ dj-database-url==0.2.1
 django-ajax-search==1.5.1
 django-annoying==0.7.7
 django-appconf==0.6
-django-auction==0.1.0.dev
 django-authopenid==1.0.1
 django-autoslug==1.6.1
 django-bootstrap-form==2.0.6
