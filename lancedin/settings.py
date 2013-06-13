@@ -178,7 +178,7 @@ INSTALLED_APPS = (
     #'html5accordion',
     #'masonry', #pinterest
     'endless_pagination', #pinterest
-    'suit',
+    #'suit',
 
     #'country_utils',
     #'cities',
