@@ -47,7 +47,7 @@ django-tag-parser==1.0.0
 django-tagging==0.3.1
 django-tagging-autocomplete==0.3.1
 django-taggit==0.10a1
-django-tastypie==0.9.12-alpha
+django-tastypie==0.9.12
 django-user-profile==1.0.3
 django-userena==1.2.0
 django-wmd-editor==0.9.0
