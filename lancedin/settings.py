@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # Django settings for lancedin project.
@@ -16,6 +15,7 @@ MANAGERS = ADMINS
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL
+import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 
 #POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
