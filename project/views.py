@@ -37,7 +37,7 @@ def project_category(request):
     #projectcategory = Category.tree.all()
     #projectcategory = Category.tree.add_related_count(node.get_children(), Category, "parent", "count", cumulative=True)
     #projectcategory = Category.objects.add_related_count(node.get_children(), Project, 'category', 'count', True)
-    projectcategory = Category.tree.add_related_count(Category.objects.all(), Category, 'title', 'count', cumulative=True)
+    projectcategory = Category.objects.all()
     return render_to_response('project/project_category.html', locals(), context_instance=RequestContext(request))
 
 

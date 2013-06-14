@@ -91,24 +91,6 @@ class Project (models.Model):
     def __unicode__(self):
         return self.title
 
-    def add_to_search_index(sender, instance=None, **kwargs):
-        try:
-            index = site.get_index(instance.__class__)
-        except:
-            return
-
-        index.backend.update(index, [instance])
-    signals.post_save.connect(add_to_search_index)
-
-    def delete_from_search_index(sender, instance=None, **kwargs):
-        try:
-            index = site.get_index(instance.__class__)
-        except:
-            return
-
-        index.backend.remove(instance)
-    signals.post_delete.connect(delete_from_search_index)
-
     @models.permalink
     def get_absolute_url(self):
 #        return ('project.views.project_detail', self.slug)

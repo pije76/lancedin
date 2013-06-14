@@ -16,28 +16,31 @@ MANAGERS = ADMINS
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL
-#DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 
 #POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
 #DATABASES = {
 #    'default': dj_database_url.config(default=os.environ[POSTGRES_URL])
 #}
 
-DATABASES = {
-    'default': dj_database_url.config(default='postgres://cnzjpbuzbpqcyc:opCQfs3M6ZCjnCJE7zLF7iuUov@ec2-23-21-130-189.compute-1.amazonaws.com:5432/d9qoc9bsgsnqkg')
-}
-
 #DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        #'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#        'NAME': 'lancedin.db',                      # Or path to database file if using sqlite3.
-#        'USER': 'pije76',                      # Not used with sqlite3.
-#        'PASSWORD': 'tratap60',                  # Not used with sqlite3.
-#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-#    }
+#    'default': dj_database_url.config(default='postgres://cnzjpbuzbpqcyc:opCQfs3M6ZCjnCJE7zLF7iuUov@ec2-23-21-130-189.compute-1.amazonaws.com:5432/d9qoc9bsgsnqkg')
 #}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'lancedin',                      # Or path to database file if using sqlite3.
+        'USER': 'pije76',                      # Not used with sqlite3.
+        'PASSWORD': 'tratap60',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'OPTIONS': {
+        'autocommit': True,
+        }
+    }
+}
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
@@ -324,23 +327,24 @@ LOGOUT_URL = '/profile/signout/'
 #HAYSTACK_SEARCH_ENGINE = 'whoosh'
 #HAYSTACK_SEARCH_ENGINE = 'dummy' # Test For Ajax AutoComplete
 #HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
-#HAYSTACK_CONNECTIONS = {
-#    'default': {
-#        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-#        'URL': 'http://127.0.0.1:8080/solr',
-#        'TIMEOUT': 60 * 5,
-#        'INCLUDE_SPELLING': True,
-#        'BATCH_SIZE': 100,
-#    },
-#}
-
-HAYSTACK_URL = os.environ.get('WEBSOLR_URL', '')
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': HAYSTACK_URL,
+        'URL': 'http://127.0.0.1:8080/solr',
+#        'TIMEOUT': 60 * 5,
+#        'INCLUDE_SPELLING': True,
+#        'BATCH_SIZE': 100,
     },
 }
+
+# Haystack + SOLR configuration for Heroku #
+#HAYSTACK_URL = os.environ.get('WEBSOLR_URL', '')
+#HAYSTACK_CONNECTIONS = {
+#    'default': {
+#        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+#        'URL': HAYSTACK_URL,
+#    },
+#}
 
 # Debug Toolbar configuration #
 DEBUG_TOOLBAR_PANELS = (

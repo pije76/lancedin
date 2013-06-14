@@ -29,7 +29,7 @@ urlpatterns = patterns(
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True, }),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True, }),
 
-    (r'^find-project/', include('project.urls')),
+#    (r'^find-project/', include('project.urls')),
 #    (r'^find-freelancer/', include('freelancer.urls')),
 #    (r'^how-it-works/', include('freelancer.urls')),
 #   url(r'^myproject/$', direct_to_template, {'template': 'company/my_project.html'}, name='myprojectlist'),
