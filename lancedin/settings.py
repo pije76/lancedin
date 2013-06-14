@@ -13,30 +13,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# Heroku configuration #
-# Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
-
-#POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
-#DATABASES = {
-#    'default': dj_database_url.config(default=os.environ[POSTGRES_URL])
-#}
-
-#DATABASES = {
-#    'default': dj_database_url.config(default='postgres://cnzjpbuzbpqcyc:opCQfs3M6ZCjnCJE7zLF7iuUov@ec2-23-21-130-189.compute-1.amazonaws.com:5432/d9qoc9bsgsnqkg')
-#}
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
 #        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'lancedin',                      # Or path to database file if using sqlite3.
-        'USER': 'root',                      # Not used with sqlite3.
+        'USER': 'pije76',                      # Not used with sqlite3.
         'PASSWORD': 'tratap60',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
     }
 }
 
@@ -417,3 +402,17 @@ READ_MORE_TEXT = 'Read more...'
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Heroku configuration #
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+#POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
+#DATABASES = {
+#    'default': dj_database_url.config(default=os.environ[POSTGRES_URL])
+#}
+
+#DATABASES = {
+#    'default': dj_database_url.config(default='postgres://cnzjpbuzbpqcyc:opCQfs3M6ZCjnCJE7zLF7iuUov@ec2-23-21-130-189.compute-1.amazonaws.com:5432/d9qoc9bsgsnqkg')
+#}
