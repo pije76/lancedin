@@ -1,16 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load seo %}
 
-{% block seo %}
-{% get_metadata as my_meta %}
-{{ my_meta }}
-{% endblock %}
-
-{% block content %}
-{% block heading %}
-{{ my_meta.heading }}
-{% endblock %}
 <div class="container-fluid">
 
     <div class="row-fluid">
