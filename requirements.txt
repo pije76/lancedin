@@ -51,6 +51,7 @@ django-taggit==0.10a1
 django-tastypie==0.9.12
 django-user-profile==1.0.3
 django-userena==1.2.0
+django-watson==1.1.1
 django-wmd-editor==0.9.0
 easy-thumbnails==1.2
 gunicorn==0.14.6
