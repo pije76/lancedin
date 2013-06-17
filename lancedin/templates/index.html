@@ -1,9 +1,16 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load seo %}
 
-{% block title %}Home | {{ block.super }}{% endblock%}
+{% block seo %}
+{% get_metadata as my_meta %}
+{{ my_meta }}
+{% endblock %}
 
 {% block content %}
+{% block heading %}
+{{ my_meta.heading }}
+{% endblock %}
 <div class="container-fluid">
 
     <div class="row-fluid">
@@ -95,7 +102,7 @@
                         <div class="span4">
                             <img src="{{ MEDIA_URL }}img/how-it-work-3.png" style="float: left; margin-left:25px;" title="Pay with ease" width="66" height="66" />
                             <a href="/how-it-works/"><h2>Pay with ease</h2></a>
-                            <p>Payment is simple and fast once your project is complete. For added protection, rest assured with safe global payments and the LANCEDINers™.</p>
+                            <p>Payment is simple and fast once your project is complete. For added protection, rest assured with safe global payments.</p>
                         </div><!-- /.span4 -->
                     </div>
                 </div>

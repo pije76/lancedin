@@ -10,9 +10,9 @@ urlpatterns = patterns(
 #    url(r'^(?P<category>[-w]+)/(?P<slug>[-w]+)/$', 'project_detail', name='project-detail'),
 #    url(r'^(?P<category>[a-zA-Z0-9_.-]+)/(?P<slug>[a-zA-Z0-9_.-]+)/$', 'project_detail', name='project-detail'),
 
-#    (r'^create.*$', 'edit'),
-#    (r'^edit/(?P<project_id>\d+)/$', 'edit'),
-#    (r'^delete/(?P<project_id>\d+)/$', 'delete'),
+    (r'^create.*$', 'add'),
+    (r'^edit/(?P<project_id>\d+)/$', 'edit'),
+    url(r'^delete/(?P<project_id>\d+)/$', 'delete', name='delete'),
 
 #   url(r"^add/$", "add_page",name="add"),
 #   url(r"^(?P<full_slug>.*)/add/$", "add_page",name="add"),

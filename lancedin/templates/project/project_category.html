@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load mptt_tags %}
 
 {% block content %}
 <div class="container-fluid">
@@ -12,7 +11,7 @@
                 <form class="form-search" action="/search/" method="get">
                     {{ form.as_table }}
                     <b>Search Projects</b>
-                    <input class="span2" id="appendedDropdownButton" type="text" name="q" value="">
+                    <input class="span2" id="DropdownButton" type="text" name="q" value="">
                     <button type="submit" class="btn">Search</button>
                     <div class="btn-group">
                         <button class="btn dropdown-toggle" data-toggle="dropdown">Category
@@ -34,16 +33,13 @@
 
     <div class="well">
     <ul>
-        {% recursetree projectcategory %}
+        {% for cat in parentcategory %}
         <li>
             <div class="categoryTitle">
-                <a href="{{ node.slug }}">{{ node.title }}</a> ({{ node.get_descendant_count }})
-                {% with node.get_children as projectcategory %}
-                <ul class="children">{{ children }}</ul>
-                {% endwith %}
+                <a href="{{ cat.slug }}">{{ cat.title }}</a> ({{ cat.project_set.count }})
             </div>
         </li>
-        {% endrecursetree %}
+        {% endfor %}
     </ul>
     </div>
 

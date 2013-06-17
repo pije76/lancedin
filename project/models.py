@@ -1,22 +1,10 @@
-from django.db import models, connection
-from django.db.models import CharField, DateField, ForeignKey, Model, permalink, signals
+from django.db import models
+from django.db.models import permalink, signals
 from django.template.defaultfilters import slugify
-from django.contrib.auth.models import User
-from django.contrib.admin import SimpleListFilter
-from django.utils.translation import ugettext_lazy as _
-from django.db.models.signals import post_save
-from django.utils.encoding import smart_unicode
-from django.utils.translation import ugettext_lazy as _
-from django.core import urlresolvers
-from django.core.urlresolvers import reverse
+from django.contrib.sitemaps import ping_google
 from django.core.exceptions import *
 
-
 from tagging.fields import TagField
-from tagging.models import Tag
-#from tagging_autocomplete_tagit.models import TagAutocompleteTagItField
-from mptt.models import MPTTModel, TreeForeignKey
-from autoslug import AutoSlugField
 from haystack import indexes
 
 from datetime import datetime, timedelta
@@ -74,9 +62,9 @@ def get_expire():
 # Create your models here.
 class Project (models.Model):
     title = models.CharField("Project Title", max_length=200, unique=True)
-    slug = AutoSlugField(max_length=200, unique=True, help_text='Automatically built from the title.')
-    category = models.ForeignKey('project.Category', related_name='categories')
-#    sub_category = models.ForeignKey('project.SubCategory')
+    slug = models.SlugField(max_length=200, unique=True, help_text='Automatically built from the title.')
+    category = models.ForeignKey('project.Category', null=True)
+#    sub_category = models.ForeignKey('project.SubCategory', null=True)
     skill = models.ManyToManyField('project.Skill')
     description = models.TextField("project Description")
     project_type = models.CharField("Project Type", max_length=60, choices=TYPE_CHOICES,)
@@ -86,10 +74,28 @@ class Project (models.Model):
     duration = models.CharField("Duration", max_length=60, choices=DURATION_CHOICES,)
     create_date = models.DateTimeField('Date Published', auto_now_add=True, blank=True, null=True)
     expire_date = models.DateField('Expire Date', default=get_expire, blank=True, null=True, db_index=True)
-    company = models.ForeignKey('profile.Profile', blank=True, null=True)
+    company = models.ForeignKey('company.Profile', blank=True, null=True)
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
+
+    def add_to_search_index(sender, instance=None, **kwargs):
+        try:
+            index = site.get_index(instance.__class__)
+        except:
+            return
+
+        index.backend.update(index, [instance])
+    signals.post_save.connect(add_to_search_index)
+
+    def delete_from_search_index(sender, instance=None, **kwargs):
+        try:
+            index = site.get_index(instance.__class__)
+        except:
+            return
+
+        index.backend.remove(instance)
+    signals.post_delete.connect(delete_from_search_index)
 
     @models.permalink
     def get_absolute_url(self):
@@ -98,11 +104,17 @@ class Project (models.Model):
         return ('project.views.project_detail', (), {'category': self.category.slug, 'slug': self.slug})
 #        return u'/%s/%s/' % (self.category.slug, self.slug)
 
-    def save(self, *args, **kwargs):
+    def save(self, force_insert=False, force_update=False, *args, **kwargs):
 #        self.description = markdown(self.description)
         if not self.slug:
             self.slug = slugify(self.title)
-        return super(Project, self).save(*args, **kwargs)
+        return super(Project, self).save(force_insert, force_update, *args, **kwargs)
+        try:
+            ping_google()
+        except Exception:
+        # Bare 'except' because we could get a variety
+        # of HTTP-related exceptions.
+            pass
 
     class Meta:
         ordering = ('-create_date',)
@@ -110,11 +122,10 @@ class Project (models.Model):
         verbose_name = 'Project'
 
 
-class Category(MPTTModel):
-    title = models.CharField(max_length=200, unique=True)
-#    slug = models.SlugField(max_length=200, unique=True)
-    slug = AutoSlugField(max_length=200, help_text='Automatically built from the title.')
-    parent = TreeForeignKey('self', blank=True, null=True, related_name='children')
+class Category(models.Model):
+    title = models.CharField(max_length=200, unique=True, blank=False)
+    slug = models.SlugField(max_length=200, unique=True)
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
 
     def __unicode__(self):
         if self.parent:
@@ -125,13 +136,15 @@ class Category(MPTTModel):
     def get_absolute_url(self):
         return ('project.views.project_category', (), {'slug': self.slug})
 
-    class MPTTMeta:
+    class Meta:
         verbose_name_plural = "Categories"
-        level_attr = 'mptt_level'
-        order_insertion_by = ['title']
+        unique_together = ('slug', 'parent',)
+#        level_attr = 'mptt_level'
+#        order_insertion_by = ['title']
+
 
 #class SubCategory(models.Model):
-#    title = models.CharField(max_length=200, unique=True)
+#    title = models.CharField(max_length=200, unique=True, blank=False)
 #    slug = models.SlugField(max_length=200, unique=True)
 #    category = models.ForeignKey('project.Category')
 
@@ -154,3 +167,5 @@ class Skill(models.Model):
 
     def get_tags(self):
         return Skill.objects.get_for_object(self)
+
+#tagging.register(Skill, tag_descriptor_attr='etags')

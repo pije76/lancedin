@@ -15,9 +15,9 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
 #        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'lancedin',                      # Or path to database file if using sqlite3.
+        'NAME': 'lancedin.db',                      # Or path to database file if using sqlite3.
         'USER': 'pije76',                      # Not used with sqlite3.
         'PASSWORD': 'tratap60',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -104,9 +104,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
+    'watson.middleware.SearchContextMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'seo_cascade.middleware.SEOMiddleware',
 )
 
 ROOT_URLCONF = 'lancedin.urls'
@@ -139,6 +143,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     #'django.contrib.comments',
+    'django.contrib.redirects',
+    'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.flatpages',
     'django.contrib.humanize',
@@ -159,7 +165,7 @@ INSTALLED_APPS = (
     #'category',
     #'categories',
     #'categories.editor',
-    'mptt',
+    #'mptt',
     #'mpttmenu',
     #'django_mptt_admin',
     #'commons',
@@ -196,6 +202,7 @@ INSTALLED_APPS = (
 
     'haystack',
     #'celery_haystack',
+    'watson',
     'south',
     'debug_toolbar',
     'compressor',  #pinterest
@@ -207,6 +214,11 @@ INSTALLED_APPS = (
     #'compressor',
     #'paypal.standard.ipn',
     #'tastypie',
+    #'seo',
+    'rollyourown.seo',
+    'meta',
+    'robots',
+    #'static_sitemaps',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -306,8 +318,8 @@ LOGOUT_URL = '/profile/signout/'
 #}
 
 # Haystack + SOLR configuration #
-#HAYSTACK_SITECONF = 'project.search_indexes'
-#HAYSTACK_SEARCH_ENGINE = 'whoosh'
+#HAYSTACK_SITECONF = 'lancedin.search_sites'
+#HAYSTACK_SEARCH_ENGINE = 'solr'
 #HAYSTACK_SEARCH_ENGINE = 'dummy' # Test For Ajax AutoComplete
 #HAYSTACK_SOLR_URL = 'http://127.0.0.1:8080/solr'
 HAYSTACK_CONNECTIONS = {
@@ -398,15 +410,39 @@ REPUTATION_PERMISSONS = {'voting.can_vote_up': 50,
 #MPTT_ADMIN_LEVEL_INDENT = 20
 
 APPEND_SLASH = True
+
 READ_MORE_TEXT = 'Read more...'
 
+
+
+SEO_FOR_MODELS = [
+    'project.models.Project',
+    'project.models.Category',
+]
+
+META_SITE_PROTOCOL = 'http'
+META_SITE_DOMAIN = '127.0.0.1:8000'
+
+ROBOTS_USE_SITEMAP = False
+ROBOTS_CACHE_TIMEOUT = 60*60*24
+#ROBOTS_SITEMAP_URLS = [
+#    http://www.example.com/sitemap.xml,
+#]
+
+#STATICSITEMAPS_ROOT_SITEMAP = 'lancedin.sitemaps.sitemaps'
+
+CATEGORIES_SETTINGS = {
+    'FK_REGISTRY': {
+        'project.Project': 'category',
+    }
+}
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
+#import dj_database_url
+#DATABASES['default'] = dj_database_url.config()
 
 #POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
 #DATABASES = {

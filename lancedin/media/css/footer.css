@@ -3,9 +3,10 @@
     margin: 20px auto 0 auto;
     /* background-color: #0D1E27; */
     /* background-color: #526476; */
-    background-color: #444444;
+    /*background-color: #444444;*/
+    background: url(../img/centerer.png) repeat;
     box-shadow: 0 0 8px 1px #2D2D2D;
-    padding: 20px 0 20px 220px;
+    padding: 20px 0 0 220px;
     color: #d2d2d2;
     height: 200px;
 }
@@ -105,7 +106,8 @@
     position: relative;
     width: 100%;
     height: 50px;
-    background-color: #2d2d2d;
+/*    background-color: #2d2d2d;*/
+    background: url(../img/footer.png) repeat;
     color: #d2d2d2;
 }
 

@@ -1,11 +1,12 @@
 body {
   font-size: 12px;
   font-family: sans-serif;
-/*  background:#fff url(../img/bg_gradient.png) repeat-x 0 0;
-  background-color: #EBF0F7;
+  background:#fff url(../img/body.jpg) repeat;
+/*  background-color: #EBF0F7;
   background-color: #86B2B4;
-  background-color: #4AC4A7;*/
+  background-color: #4AC4A7;
   background-color: #313947;
+  background-color: #347BA7;*/
   color: #333333;
   line-height: 20px;
   margin: 0;
@@ -44,10 +45,6 @@ button.button:hover, a.button:hover {
 /*    width: 100%;*/
 }
 
-.well {
-  background-color:#ffffff;
-}
-
 .btn-info {
   font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
   display: block;
@@ -77,15 +74,31 @@ button.button:hover, a.button:hover {
     padding-right: 10px;
 }
 
+#how-it-works .well .row-fluid .span4 ul{
+    font-size: 14px;
+}
+
 #how-it-works .well .row-fluid .span4 p{
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     margin-top: -15px;
 }
 
-
 .container-fluid {
     margin-top: 100px;
+}
+
+.container-fluid .well {
+    background-color: #FFFFFF;
+/*    background-color: #7C80B8;*/
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 8px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 19.5px;
+    position: relative;
+    z-index: auto;
 }
 
 .container-fluid .row-fluid .span4 .well h1{
@@ -146,8 +159,9 @@ button.button:hover, a.button:hover {
     text-align:center;
     color:white;
 /*    width:250px;
-    font-weight:900;*/
-    background:#0050CC;
+    font-weight:900;
+    background:#0050CC;*/
+    background-color: #7C80B8;
 /*    font-variant:small-caps;*/
     font-size:20px;
     margin: 0px;
@@ -203,6 +217,7 @@ button.button:hover, a.button:hover {
 
 #masonrycontainer{
 /*    height: 80%;
+/*    background-color: #7C80B8;
     background-color: #313947;*/
     background-color:#ffffff;
     padding: 10px;
@@ -210,6 +225,13 @@ button.button:hover, a.button:hover {
     width: 105%;
 /*    margin: 0 auto;
     margin-top: 20px;*/
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    z-index: auto;
+
 }
 
 #masonrycontainer a:link, a:active, a:visited{

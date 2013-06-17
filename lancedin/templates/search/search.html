@@ -4,25 +4,23 @@
 
 {% block content %}
 <div class="container-fluid">
-        <h2>Search Results</h2>
-        <div id="masonrycontainer">
-            {% if query %}
-            {% for result in page.object_list %}
-            <div class="itemSelector">
-                <div class="itemTitle">
-                    <p><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></p>
-                </div>
-
+    <h2>Search Results</h2>
+    <div id="masonrycontainer">
+        {% if query %}
+        {% for result in page.object_list %}
+        <div class="itemSelector">
+            <div class="itemTitle">
+                <p><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a></p>
+            </div>
             <div class="itemDescription">
                 <p>{{ result.object.description }}</p>
             </div><!--End of itemDescription-->
-
-            </div><!--End of itemSelector-->
-            {% empty %}
-            <p>No results found.</p>
-            {% endfor %}
-            {% endif %}
-        </div>
+        </div><!--End of itemSelector-->
+        {% empty %}
+        <p>No results found.</p>
+        {% endfor %}
+        {% endif %}
+    </div>
 </div>
 <script>
 $(function()

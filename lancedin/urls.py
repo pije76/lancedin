@@ -7,11 +7,6 @@ from project.models import Project
 from django.contrib import admin
 admin.autodiscover()
 
-info_dict = {
-    'queryset': Project.objects.filter(),
-    'date_field': 'creation_date',
-}
-
 urlpatterns = patterns(
     '',
 #   url(r'^lancedin/', include('lancedin.foo.urls')),
@@ -29,7 +24,7 @@ urlpatterns = patterns(
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes': True, }),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': True, }),
 
-#    (r'^find-project/', include('project.urls')),
+    (r'^find-project/', include('project.urls')),
 #    (r'^find-freelancer/', include('freelancer.urls')),
 #    (r'^how-it-works/', include('freelancer.urls')),
 #   url(r'^myproject/$', direct_to_template, {'template': 'company/my_project.html'}, name='myprojectlist'),
