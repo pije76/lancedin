@@ -13,7 +13,7 @@ from decorators import confirm_required
 #from mptt.templatetags.mptt_tags import cache_tree_children
 #from haystack.query import SearchQuerySet
 from haystack.views import SearchView
-from meta.views import Meta
+#from meta.views import Meta
 
 
 # Create your views here.
