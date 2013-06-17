@@ -183,7 +183,7 @@ INSTALLED_APPS = (
     #'jquery',
     #'html5accordion',
     #'masonry', #pinterest
-    'endless_pagination', #pinterest
+    #'endless_pagination', #pinterest
     #'suit',
 
     #'country_utils',
@@ -215,9 +215,9 @@ INSTALLED_APPS = (
     #'paypal.standard.ipn',
     #'tastypie',
     #'seo',
-    'rollyourown.seo',
-    'meta',
-    'robots',
+    #'rollyourown.seo',
+    #'meta',
+    #'robots',
     #'static_sitemaps',
 )
 
@@ -441,8 +441,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Heroku configuration #
 # Parse database configuration from $DATABASE_URL
-#import dj_database_url
-#DATABASES['default'] = dj_database_url.config()
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
 
 #POSTGRES_URL = "HEROKU_POSTGRESQL_<COLOR>_URL"
 #DATABASES = {
