@@ -7,7 +7,7 @@ from django.http import HttpResponse
 
 import json
 
-from models import Project, Category, Skill
+from models import Project, Category
 from decorators import confirm_required
 
 #from mptt.templatetags.mptt_tags import cache_tree_children
@@ -41,29 +41,39 @@ def project_category(request):
 
     #node = Category.objects.all()
     #node = Category.objects.get(parent=None)
-    #parentcategory = Category.objects.add_related_count(Category.tree.root_nodes(), Project, 'category', 'count', cumulative=True)
+    #parentcategory = Category.objects.add_related_count(Category.tree.root_nodes(), Project, 'category', 'cat_count', cumulative=True)
     #parentcategory = Category.tree.all()
-    #parentcategory = Category.tree.add_related_count(node.get_children(), Project, 'category', 'count')
-    #parentcategory = Category.objects.add_related_count(node.get_children(), Project, 'category', 'count')
-    parentcategory = Category.objects.all()
+    #parentcategory = Category.tree.add_related_count(node.get_children(), Project, 'category', 'cat_count')
+    parentcategory = Category.tree.add_related_count(Category.objects.all(), Project, 'category', 'cat_count', cumulative=True)
+    #parentcategory = Category.objects.add_related_count(node.get_children(), Project, 'category', 'cat_count')
+    #parentcategory = Category.objects.all()
     #parentcategory = Category.objects.filter(parent__isnull=True)
     #parentcategory = Category.objects.all().annotate(count=Count('title'))
     #parentcategory = Project.objects.values('category').annotate(count=Count('category'))
     #parentcategory = Category.objects.all().annotate(count=Count('title')).filter(parent__isnull=False)
-    return render_to_response('project/project_category.html', locals(), context_instance=RequestContext(request))
+    #parentcategory = Category.tree.all()
+    #parentcategory = Category.tree.root_nodes()
+    #parentcategory = Category.objects.add_related_count(Category.tree.root_nodes(), Project, 'category', 'cat_count', cumulative=True)
+    #node = Category.objects.get(title='Web Development')
+    #parentcategory = Category.objects.add_related_count(node.get_children(), Project, 'category', 'cat_count')
+    #parentcategory = Category.objects.add_related_count(node.get_children(), Project, 'category', 'cat_count', True)
+    return render_to_response('project/project_category.html', {'parentcategory': parentcategory}, RequestContext(request))
 
 
 def project_list(request, slug):
-    #category = get_object_or_404(Category, slug=slug)  # Given a category slug, display all items in a category.
-    category = get_object_or_404(Category, slug=slug)
+    category = get_object_or_404(Category, slug=slug)  # Given a category slug, display all items in a category.
     #category = Category.objects.filter(parent__isnull=True)
     projectlist = Project.objects.filter(category=category)
-    return render_to_response("project/project_list.html", locals(), context_instance=RequestContext(request))
+    #projectlist = Category.objects.all()
+    #projectlist = Category.tree.all()
+    #projectlist = Category.tree.root_nodes()
+    return render_to_response("project/project_list.html", {'projectlist': projectlist}, context_instance=RequestContext(request))
+
 
 def project_detail(request, slug, category):
     category = Category.objects.filter(slug=category)
     projectdetail = Project.objects.filter(slug=slug)
-    return render_to_response('project/project_detail.html', locals(),  context_instance=RequestContext(request))
+    return render_to_response('project/project_detail.html', {'projectdetail': projectdetail},  context_instance=RequestContext(request))
 #    return object_list(request, queryset=Category.objects.all(), paginate_by=20, template_name='project/project_list.html', extra_context={'category': category})
 
 

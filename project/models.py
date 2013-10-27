@@ -6,6 +6,7 @@ from django.core.exceptions import *
 
 from tagging.fields import TagField
 from haystack import indexes
+from mptt.models import MPTTModel, TreeForeignKey
 
 from datetime import datetime, timedelta
 
@@ -122,19 +123,25 @@ class Project (models.Model):
         verbose_name = 'Project'
 
 
-class Category(models.Model):
+class Category(MPTTModel):
     title = models.CharField(max_length=200, unique=True, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
-    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
+    parent = TreeForeignKey('self', blank=True, null=True, related_name='children')
 
     def __unicode__(self):
         if self.parent:
             return u'%s: %s' % (self.parent.title, self.title)
         return u'%s' % (self.title)
 
+    def get_count(self):
+        return Category.objects.filter(title=self).count()
+
     @permalink
     def get_absolute_url(self):
         return ('project.views.project_category', (), {'slug': self.slug})
+
+    class MPTTMeta:
+        order_insertion_by = ['title']
 
     class Meta:
         verbose_name_plural = "Categories"

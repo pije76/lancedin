@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n mptt_tags %}
 
 {% block content %}
 <div class="container-fluid">
@@ -32,15 +32,18 @@
         </div>
 
     <div class="well">
-    <ul>
-        {% for cat in parentcategory %}
-        <li>
-            <div class="categoryTitle">
-                <a href="{{ cat.slug }}">{{ cat.title }}</a> ({{ cat.project_set.count }})
-            </div>
+        {% recursetree parentcategory %}
+        <ul>
+        <div class="categoryTitle">
+        <a href="{{ node.slug }}">{{ node.title }} ({{ node.cat_count }})</a>
+        {% if not node.is_leaf_node %}
+        <li class="children">
+        {{ children }}
         </li>
-        {% endfor %}
-    </ul>
+        {% endif %}
+        </div>
+        </ul>
+        {% endrecursetree %}
     </div>
 
     {% else %}

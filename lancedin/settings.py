@@ -165,7 +165,7 @@ INSTALLED_APPS = (
     #'category',
     #'categories',
     #'categories.editor',
-    #'mptt',
+    'mptt',
     #'mpttmenu',
     #'django_mptt_admin',
     #'commons',
@@ -205,7 +205,7 @@ INSTALLED_APPS = (
     'watson',
     'south',
     'debug_toolbar',
-    'compressor',  #pinterest
+    'compressor',  # pinterest
 
     'tagging',
     #'tagging_autocomplete_tagit',
@@ -356,7 +356,7 @@ DEBUG_TOOLBAR_PANELS = (
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
-    'ENABLE_STACKTRACES' : True,
+    'ENABLE_STACKTRACES': True,
 }
 
 # Django-Tagging Configuration #
@@ -413,8 +413,6 @@ APPEND_SLASH = True
 
 READ_MORE_TEXT = 'Read more...'
 
-
-
 SEO_FOR_MODELS = [
     'project.models.Project',
     'project.models.Category',
@@ -424,7 +422,7 @@ META_SITE_PROTOCOL = 'http'
 META_SITE_DOMAIN = '127.0.0.1:8000'
 
 ROBOTS_USE_SITEMAP = False
-ROBOTS_CACHE_TIMEOUT = 60*60*24
+ROBOTS_CACHE_TIMEOUT = 60 * 60 * 24
 #ROBOTS_SITEMAP_URLS = [
 #    http://www.example.com/sitemap.xml,
 #]

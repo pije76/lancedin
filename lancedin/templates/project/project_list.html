@@ -4,18 +4,19 @@
 {% block content %}
 <div class="container-fluid">
     <div id="masonrycontainer">
+
         {% if projectlist %}
-        {% for project in projectlist %}
+        {% for node in projectlist %}
 
         <div class="itemSelector"> <!--- itemSelector (perulangan) -->
 
             <div class="itemTitle">
-                <a href="{{ project.slug }}">{{ project.title }}</a>
+                <a href="{{ node.slug }}">{{ node.title }}</a>
                 <br />
             </div><!--End of itemTitle-->
 
             <div class="itemDescription">
-                <p>{{ project.description }}</p>
+                <p>{{ node.description }}</p>
             </div><!--End of itemDescription-->
 
             <div class="itemDetail">
